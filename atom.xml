@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2012-06-06T06:02:17+10:00</updated>
+  <updated>2012-06-07T06:43:58+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Kai Willadsen]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Obligatory first post]]></title>
+    <link href="http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/"/>
+    <updated>2012-06-06T07:54:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2012/06/06/obligatory-first-post</id>
+    <content type="html"><![CDATA[<p>This blog is an attempt to consolidate the limited writing that I do.
+Statistics suggest that it will probably fail.</p>
+]]></content>
+  </entry>
   
 </feed>
