@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Ambivalent Certainty]]></title>
-  <link href="http://kaiw.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Meld | Ambivalent Certainty]]></title>
+  <link href="http://kaiw.github.com/blog/categories/meld/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
   <updated>2012-06-13T21:40:20+10:00</updated>
   <id>http://kaiw.github.com/</id>
@@ -21,8 +21,8 @@
     <content type="html"><![CDATA[<p>Meld is in the process of getting nice new shiny
 <a href="http://projectmallard.org/">Mallard</a>-based documentation. There are several
 things standing in the way of getting our new help actually distributed with
-Meld &#8212; not least of which being that I haven&#8217;t yet pushed it to Git &#8212; but
-there&#8217;s nothing much stopping me from making it available on the
+Meld --- not least of which being that I haven't yet pushed it to Git --- but
+there's nothing much stopping me from making it available on the
 <a href="http://meldmerge.org/">Meld website</a>.</p>
 
 <p>Putting the Mallard docs online involved:</p>
@@ -36,7 +36,7 @@ there&#8217;s nothing much stopping me from making it available on the
 
 <h2>Mallard to HTML</h2>
 
-<p>While it&#8217;s sadly not obvious that you can do this, you can use
+<p>While it's sadly not obvious that you can do this, you can use
 <code>gnome-doc-utils</code> to
 <a href="http://projectmallard.org/pipermail/mallard-list_projectmallard.org/2010-November/000037.html">generate fairly straightforward HTML and accompanying CSS</a>
 from Mallard documentation.</p>
@@ -45,7 +45,7 @@ from Mallard documentation.</p>
 gnome-doc-tool html -c index.css --copy-graphics *.page
 </code></pre>
 
-<p>You&#8217;ll get an HTML page for each Mallard page, and it&#8217;ll all link to the
+<p>You'll get an HTML page for each Mallard page, and it'll all link to the
 external CSS. No drama here.</p>
 
 <h2>Stripping the HTML</h2>
@@ -53,8 +53,8 @@ external CSS. No drama here.</p>
 <p>The HTML generated is designed to be stand-alone. However, we want to be able
 to embed it in an existing webpage. Doing the simplest and hackiest thing
 available, I used BeautifulSoup to just pull out the contents of the body, add
-a header for Jekyll (Meld&#8217;s site is hosted on GitHub) and rewrite the new
-&#8216;HTML&#8217;.</p>
+a header for Jekyll (Meld's site is hosted on GitHub) and rewrite the new
+'HTML'.</p>
 
 <p>I added a new Jekyll layout to be used for the help pages, and wrapped the
 whole help content block in a <code>#help-content</code> <code>div</code>.</p>
@@ -62,7 +62,7 @@ whole help content block in a <code>#help-content</code> <code>div</code>.</p>
 <h2>Massaging the CSS</h2>
 
 <p>The generated CSS is all top-level rules and whatnot. Worse yet, it uses
-<em>sensible</em> class names like &#8220;title&#8221;, so you&#8217;re bound to have conflicting
+<em>sensible</em> class names like "title", so you're bound to have conflicting
 classes in an existing site. Again doing the stupidest thing that would work,
 I wrapped the whole CSS file in:</p>
 
@@ -110,18 +110,8 @@ additional (evil) styling overrides:</p>
 
 <p>and it looks pretty much like a sensibly-embedded Mallard page.</p>
 
-<p>It&#8217;s a pile of dirty hacks, but now at least Windows users can read our
+<p>It's a pile of dirty hacks, but now at least Windows users can read our
 documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Obligatory first post]]></title>
-    <link href="http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/"/>
-    <updated>2012-06-06T07:54:00+10:00</updated>
-    <id>http://kaiw.github.com/blog/2012/06/06/obligatory-first-post</id>
-    <content type="html"><![CDATA[<p>This blog is an attempt to consolidate the limited writing that I do.
-Statistics suggest that it will probably fail.</p>
 ]]></content>
   </entry>
   
