@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ambivalent Certainty</title>
+  <title>Things that suck about Meld that I learned about by writing user help - Ambivalent Certainty</title>
   <meta name="author" content="Kai Willadsen">
 
   
@@ -19,7 +19,7 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaiw.github.com/blog/">
+  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,15 +64,12 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/28/things-I-learned-while-writing-help/">Things That Suck About Meld That I Learned About by Writing User Help</a></h1>
+      <h1 class="entry-title">Things That Suck About Meld That I Learned About by Writing User Help</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
   </header>
 
 
-  <div class="entry-content"><p>In any software that you work on, there are always pain points; there are
+<div class="entry-content"><p>In any software that you work on, there are always pain points; there are
 things that you <em>know</em> aren&#8217;t great, but are low priority or hard to fix or
 would mean changing established behaviours. It&#8217;s when you sit down to document
 how these things work that you realise <em>just how much these things suck</em>.</p>
@@ -145,151 +142,16 @@ to warrant being on the toolbar anyway.
 <a href="http://git.gnome.org/browse/meld/commit/?id=3b24e07f65e8d5bd561c4925a487e15a64ce941a">Fixed</a>
 and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76e35f30e4ca5d046ca">fixed</a>.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/12/plucking-a-mallard/">Plucking a Mallard</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Kai Willadsen</span></span>
 
-<time datetime="2012-06-12T19:08:00+10:00" pubdate data-updated="true">Jun 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Meld is in the process of getting nice new shiny
-<a href="http://projectmallard.org/">Mallard</a>-based documentation. There are several
-things standing in the way of getting our new help actually distributed with
-Meld &#8212; not least of which being that I haven&#8217;t yet pushed it to Git &#8212; but
-there&#8217;s nothing much stopping me from making it available on the
-<a href="http://meldmerge.org/">Meld website</a>.</p>
-
-<p>Putting the Mallard docs online involved:</p>
-
-<ul>
-<li>Formatting the docs as HTML</li>
-<li>Pulling the necessary content out of the formatted docs</li>
-<li>Fixing the Mallard-generated CSS to only apply to the embedded content</li>
-</ul>
-
-
-<h2>Mallard to HTML</h2>
-
-<p>While it&#8217;s sadly not obvious that you can do this, you can use
-<code>gnome-doc-utils</code> to
-<a href="http://projectmallard.org/pipermail/mallard-list_projectmallard.org/2010-November/000037.html">generate fairly straightforward HTML and accompanying CSS</a>
-from Mallard documentation.</p>
-
-<pre><code>gnome-doc-tool css
-gnome-doc-tool html -c index.css --copy-graphics *.page
-</code></pre>
-
-<p>You&#8217;ll get an HTML page for each Mallard page, and it&#8217;ll all link to the
-external CSS. No drama here.</p>
-
-<h2>Stripping the HTML</h2>
-
-<p>The HTML generated is designed to be stand-alone. However, we want to be able
-to embed it in an existing webpage. Doing the simplest and hackiest thing
-available, I used BeautifulSoup to just pull out the contents of the body, add
-a header for Jekyll (Meld&#8217;s site is hosted on GitHub) and rewrite the new
-&#8216;HTML&#8217;.</p>
-
-<p>I added a new Jekyll layout to be used for the help pages, and wrapped the
-whole help content block in a <code>#help-content</code> <code>div</code>.</p>
-
-<h2>Massaging the CSS</h2>
-
-<p>The generated CSS is all top-level rules and whatnot. Worse yet, it uses
-<em>sensible</em> class names like &#8220;title&#8221;, so you&#8217;re bound to have conflicting
-classes in an existing site. Again doing the stupidest thing that would work,
-I wrapped the whole CSS file in:</p>
-
-<pre><code>#help-content {
-    ...
-}
-</code></pre>
-
-<p>and passed it through <a href="http://sass-lang.com/">Sass</a> as SCSS. This stopped the
-help CSS messing with the main site, but the help pages themselves were all
-wrong due to some messy interaction with the existing CSS reset, etc. A few
-additional (evil) styling overrides:</p>
-
-<pre><code>#help-content {
-  background-color: #ffffff;
-}
-
-#help-content div.body {
-  border: none !important;
-}
-
-#help-content div.headbar {
-  margin: 10px !important;
-}
-
-#help-content div.footbar {
-  margin: 10px !important;
-}
-
-#help-content .title {
-  line-height: 1em;
-}
-
-#help-content h1 {
-  font-family: sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-#help-content h2 {
-  font-family: sans-serif;
-  color: black;
-}
-</code></pre>
-
-<p>and it looks pretty much like a sensibly-embedded Mallard page.</p>
-
-<p>It&#8217;s a pile of dirty hacks, but now at least Windows users can read our
-documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/06/obligatory-first-post/">Obligatory First Post</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -301,28 +163,38 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
   
 
 
-<time datetime="2012-06-06T07:54:00+10:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-06-28T06:52:00+10:00" pubdate data-updated="true">Jun 28<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/documentation/'>Documentation</a>, <a class='category' href='/blog/categories/meld/'>Meld</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>This blog is an attempt to consolidate the limited writing that I do.
-Statistics suggest that it will probably fail.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/06/12/plucking-a-mallard/" title="Previous Post: Plucking a Mallard">&laquo; Plucking a Mallard</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -351,6 +223,7 @@ Statistics suggest that it will probably fail.</p>
 
   
 </aside>
+
 
     </div>
   </div>

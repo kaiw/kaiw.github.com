@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meld | Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/blog/categories/meld/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2012-06-13T21:40:20+10:00</updated>
+  <updated>2012-06-28T06:55:25+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Things that suck about Meld that I learned about by writing user help]]></title>
+    <link href="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/"/>
+    <updated>2012-06-28T06:52:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help</id>
+    <content type="html"><![CDATA[<p>In any software that you work on, there are always pain points; there are
+things that you <em>know</em> aren't great, but are low priority or hard to fix or
+would mean changing established behaviours. It's when you sit down to document
+how these things work that you realise <em>just how much these things suck</em>.</p>
+
+<p>If developers had to document the bizarre corners of their UI, I'm sure we'd
+have far fewer bizarre corners. By way of example, while writing
+<a href="http://meldmerge.org">Meld's</a> new help docs, I simply couldn't
+bring myself to write the sentence "Toggle a case insensitive comparison by
+clicking 'Case' on the toolbar", so ended up rearranging the toolbar and fixing
+some labels. The world is better for it.</p>
+
+<p>The following is a very incomplete list of the things that made me feel ashamed
+when documentating them.</p>
+
+<h2>Which file gets saved?</h2>
+
+<p>When you "Save", Meld only saves the currently focussed file. This is mostly
+sensible; the other option would be to save all files in the current
+comparison, which is often <em>not</em> what you want.</p>
+
+<p>However, this means explaining that we only save one file, and that's the
+'focussed' file. What's a focussed file? Oh, that's the one that your cursor is
+currently in. What do you mean you can't see the cursor? It's that tiny
+one-pixel wide vertical bar in the... oh, right. Look, the focussed file is
+the last one you were editing... probably.</p>
+
+<p>Actually, you know what? Forget it.</p>
+
+<p>I'm sorry.</p>
+
+<h2>Why are your shortcuts all different?</h2>
+
+<p>A while ago I fixed a long-standing request to be able to switch panes in
+file comparisons using the keyboard. Turns out I didn't bother to apply the
+same method to folder comparisons, even though it's <em>much</em> easier to do.
+Admittedly, adding this would mean that there were two ways of switching
+panes in directory comparisons, but at least one of those ways would be
+consistent across different comparison types.</p>
+
+<p>I'll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
+
+<h2>View » Hide? Case? What?</h2>
+
+<p>The menu item to toggle case-insensitive comparison was labelled "Case",
+probably so that it would fit on the toolbar... but it's not important enough
+to warrant being on the toolbar anyway.
+<a href="http://git.gnome.org/browse/meld/commit/?id=3b24e07f65e8d5bd561c4925a487e15a64ce941a">Fixed</a>
+and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76e35f30e4ca5d046ca">fixed</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Plucking a Mallard]]></title>

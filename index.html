@@ -9,9 +9,8 @@
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="Meld is in the process of getting nice new shiny
-Mallard-based documentation. There are several
-things standing in the way of getting our new help &hellip;">
+  <meta name="description" content="In any software that you work on, there are always pain points; there are
+things that you know aren&#8217;t great, but are low priority or hard to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +66,90 @@ things standing in the way of getting our new help &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/28/things-I-learned-while-writing-help/">Things That Suck About Meld That I Learned About by Writing User Help</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-28T06:52:00+10:00" pubdate data-updated="true">Jun 28<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In any software that you work on, there are always pain points; there are
+things that you <em>know</em> aren&#8217;t great, but are low priority or hard to fix or
+would mean changing established behaviours. It&#8217;s when you sit down to document
+how these things work that you realise <em>just how much these things suck</em>.</p>
+
+<p>If developers had to document the bizarre corners of their UI, I&#8217;m sure we&#8217;d
+have far fewer bizarre corners. By way of example, while writing
+<a href="http://meldmerge.org">Meld&#8217;s</a> new help docs, I simply couldn&#8217;t
+bring myself to write the sentence &#8220;Toggle a case insensitive comparison by
+clicking &#8216;Case&#8217; on the toolbar&#8221;, so ended up rearranging the toolbar and fixing
+some labels. The world is better for it.</p>
+
+<p>The following is a very incomplete list of the things that made me feel ashamed
+when documentating them.</p>
+
+<h2>Which file gets saved?</h2>
+
+<p>When you &#8220;Save&#8221;, Meld only saves the currently focussed file. This is mostly
+sensible; the other option would be to save all files in the current
+comparison, which is often <em>not</em> what you want.</p>
+
+<p>However, this means explaining that we only save one file, and that&#8217;s the
+&#8216;focussed&#8217; file. What&#8217;s a focussed file? Oh, that&#8217;s the one that your cursor is
+currently in. What do you mean you can&#8217;t see the cursor? It&#8217;s that tiny
+one-pixel wide vertical bar in the&#8230; oh, right. Look, the focussed file is
+the last one you were editing&#8230; probably.</p>
+
+<p>Actually, you know what? Forget it.</p>
+
+<p>I&#8217;m sorry.</p>
+
+<h2>Why are your shortcuts all different?</h2>
+
+<p>A while ago I fixed a long-standing request to be able to switch panes in
+file comparisons using the keyboard. Turns out I didn&#8217;t bother to apply the
+same method to folder comparisons, even though it&#8217;s <em>much</em> easier to do.
+Admittedly, adding this would mean that there were two ways of switching
+panes in directory comparisons, but at least one of those ways would be
+consistent across different comparison types.</p>
+
+<p>I&#8217;ll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
+
+<h2>View » Hide? Case? What?</h2>
+
+<p>The menu item to toggle case-insensitive comparison was labelled &#8220;Case&#8221;,
+probably so that it would fit on the toolbar&#8230; but it&#8217;s not important enough
+to warrant being on the toolbar anyway.
+<a href="http://git.gnome.org/browse/meld/commit/?id=3b24e07f65e8d5bd561c4925a487e15a64ce941a">Fixed</a>
+and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76e35f30e4ca5d046ca">fixed</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -245,6 +328,10 @@ Statistics suggest that it will probably fail.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/06/28/things-I-learned-while-writing-help/">Things that suck about Meld that I learned about by writing user help</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/06/12/plucking-a-mallard/">Plucking a Mallard</a>
