@@ -4,7 +4,7 @@
   <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2012-07-06T08:02:07+10:00</updated>
+  <updated>2012-07-09T17:43:00+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tell me what you can't do]]></title>
+    <link href="http://kaiw.github.com/blog/2012/07/09/tell-me-what-you-can%27t-do/"/>
+    <updated>2012-07-09T17:45:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2012/07/09/tell-me-what-you-can&#8217;t-do</id>
+    <content type="html"><![CDATA[<p>When writing Meld&#8217;s <a href="http://meldmerge.org/help/">new documentation</a>, I added
+a section that I wish every software project had:
+<a href="http://meldmerge.org/help/missing-functionality.html">&#8220;Things that Meld doesn&#8217;t do&#8221;</a>.</p>
+
+<p>Everyone&#8217;s had the experience of spending hours trying to figure out how to
+do &lt;insert task here&gt; with &lt;tool of choice&gt;, because <em>obviously</em>
+&lt;tool of choice&gt; <em>must</em> be able to do &lt;insert task here&gt;. Many
+years ago I remember trying to figure out how to create a histogram with
+Excel&#8212;ludicrously obvious functionality for a spreadsheet&#8212;but at the time
+it was all-but-impossible without a third-party commercial add-on.</p>
+
+<p>If &#8216;stuff we don&#8217;t do&#8217; is documented at all, it&#8217;s often relegated to a point in
+the FAQ (e.g.,
+<a href="http://projects.gnome.org/gnumeric/faq.shtml#6">Gnumeric and pivot tables</a>),
+which is okay as long as it shows up in a simple search. Ideally though, I feel
+like software should do a better job of telling you both what it can do, and
+what it can&#8217;t.</p>
+
+<p>Spending time only to find out that a tool can&#8217;t solve your problem is an
+incredibly frustrating experience.</p>
+
+<p>Exposing your limitations might feel like bad marketing, but ultimately you&#8217;ll
+end up with fewer unhappy users.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Things that suck about Meld that I learned about by writing user help]]></title>
