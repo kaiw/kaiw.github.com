@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meld | Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/blog/categories/meld/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2012-07-09T17:43:00+10:00</updated>
+  <updated>2012-09-22T15:28:26+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Meld fixes I'll never get around to, August 2012 edition]]></title>
+    <link href="http://kaiw.github.com/blog/2012/08/31/meld-fixes-one-day-part-one/"/>
+    <updated>2012-08-31T00:00:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2012/08/31/meld-fixes-one-day-part-one</id>
+    <content type="html"><![CDATA[<p>Our automatic merging commands 'Merge from left', 'Merge from right' and
+'Merge all' depend on the focussed pane. There are two problems with this.</p>
+
+<p>Firstly, for most people, merging goes from the outsides to the middle, and
+never in reverse. The reason is that this is how it works for version control;
+merging in VC always (not actually, but close enough) involves making changes
+to <em>one</em> file with reference to the other two. As such, it would be reasonable
+to expect that 'Merge from left' actually merged all of the left pane changes
+into the middle pane, regardless of where the cursor was.</p>
+
+<p>The second problem is that 'Merge all' makes <em>absolutely no sense</em> in any pane
+other than the middle; it's identical to 'Merge from right' in the left pane,
+or 'Merge from left' in the right pane, but more confusing.</p>
+
+<p>One option would be to rework these commands so that they only ever operated
+on the middle pane. Another option would be to add some dynamic labelling so
+that it was clear what the menu item did before you clicked it. Without
+knowing how widely used these actions are, and what people use them for, it's
+hard to know what the best option is.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tell me what you can't do]]></title>
