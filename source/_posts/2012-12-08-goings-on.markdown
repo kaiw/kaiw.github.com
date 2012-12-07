@@ -1,0 +1,114 @@
+---
+layout: post
+title: "Goings-on in Meld HEAD (and local branches)"
+date: 2012-12-08 06:03
+comments: true
+categories: [Meld]
+---
+
+Git HEAD can be an interesting place. It's actually not that scary right now,
+but there have been a few interesting changes go in. There's also some cool
+stuff in the pipeline. As usual, however, that will all take an indeterminate
+period of time to arrive.
+
+
+Python 3-ish support (in HEAD)
+------------------------------
+
+In a series of twenty-something commits, I've updated everything I could find
+that might cause issues when running Meld on Python 3. This is a combination of
+things found by [Python modernize](https://github.com/mitsuhiko/python-modernize),
+[2to3](http://docs.python.org/2/library/2to3.html), and manual inspection. Due
+to my lack of a Python 3 PyGObject install, none of this is actually *tested*
+on Python 3, but it should all run on `-3` with no complaints.
+
+
+Better version control interactions (in HEAD)
+---------------------------------------------
+
+For ages, Meld has relied on a surprisingly-reliable-but-also-horrible way to
+get the repository version of a file that looks something like:
+
+* Get the current version of the file
+* Ask the VC for the diff between that file and the repository version
+* Reverse apply that patch to the current version
+* Hope...
+
+The last two steps failed on a fairly regular basis, particularly with
+Subversion, which [loves](https://bugzilla.gnome.org/show_bug.cgi?id=557615)
+to [lie](https://bugzilla.gnome.org/show_bug.cgi?id=613685) to us about what
+the actual differences are between your file and the repository. The method in
+current HEAD is somewhat more straightforward:
+
+* Get the current version of the file
+* Ask the VC for the previous version of the file
+* Profit!
+
+While the second step has VC-specific wrinkles, it does get rid of a major pain
+point. The third step is as-yet untested. Currently only Git and Subversion use
+this method, but since almost all of Meld's 'couldn't reverse-apply this patch'
+bugs are from Subversion, that's probably fine.
+
+
+Recent comparisons (coming soon)
+--------------------------------
+
+Over the years, people have requested file histories, bookmarks, reopening old
+comparisons... all sorts of different ways to deal with common comparisons.
+Usually, people have a set of two or three repositories that they view on a
+daily basis, or a couple of directory pairs that they need to sync regularly.
+Our previous solution was to store history, but this just makes it easier to
+find what you want to compare; re-opening is no faster, and the UI was not
+great anyway.
+
+Landing soon is a change that provides a very hacky integration with the
+standard recent files mechanism. This includes opening recent comparisons from
+the `File` menu, and command-line support for opening files in our own very
+special 'this is a comparison' format.
+
+It's likely that this change will also spell the end for our clone of
+[GnomeFileEntry](http://developer.gnome.org/libgnomeui/stable/GnomeFileEntry.html);
+history support was the last thing keeping it alive. I'm sure not everyone will
+be happy with moving to `GtkFileChooserButton`s, but the writing has been on
+the wall for several years now, and it's well past time to make the switch.
+
+
+New comparison opening (coming soon-ish)
+----------------------------------------
+
+Meld has a long-standing problem with its 'New' dialog. It doesn't make a whole
+lot of sense, the workflow to actually create a new comparison for it is slow,
+and it's not sufficiently obvious how you're supposed to use it. For example,
+it's not unusual to navigate to the folders you want to compare, only to
+realise that you can't actually select the folders because you've tried to
+start a file comparison.
+
+Once the recent comparison feature has landed, the history-access aspect of the
+'New comparison' dialog can go away, which makes a new UI much easier and more
+useful. I've also chosen to do away with the dialog entirely, in favour of
+sticking the UI in a new top-level tab.
+
+{% img center /images/blog/NewComparisonTab.png New comparison tab %}
+
+Another nicety here is that we now actually support opening blank comparisons!
+You could always do this, but it wasn't obvious to many people. One major use
+case here is pasting in clipboard fragments to be compared.
+
+While there are still some rough edges to be ironed out, I hope to land this
+sooner rather than later.
+
+
+VC history comparisons (coming... sometime)
+-------------------------------------------
+
+An offshoot of better VC integration is the ability to grab repository files
+from arbitrary revisions. Actually handling this sensibly is difficult however.
+We *could* just dump revisions to file and pass off file paths in `/tmp` as
+we currently do, but this really limits what we can do UI-wise. As such, I'm
+working on a revamped file comparison view that will handle browsing of
+previous revisions of VC-controlled files.
+
+{% img center /images/blog/VCHistory.png Version control history example %}
+
+Yes, changing the combo box works. No, the SHA won't be the only indicator in
+the final UI. No, there's no Subversion support; only Git and Mercurial so far.
