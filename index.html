@@ -9,8 +9,8 @@
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="Our automatic merging commands &#8216;Merge from left&#8217;, &#8216;Merge from right&#8217; and
-&#8216;Merge all&#8217; depend on the focussed pane &hellip;">
+  <meta name="description" content="Git HEAD can be an interesting place. It&#8217;s actually not that scary right now,
+but there have been a few interesting changes go in. There&#8217; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,143 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-08T06:03:00+10:00" pubdate data-updated="true">Dec 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Git HEAD can be an interesting place. It&#8217;s actually not that scary right now,
+but there have been a few interesting changes go in. There&#8217;s also some cool
+stuff in the pipeline. As usual, however, that will all take an indeterminate
+period of time to arrive.</p>
+
+<h2>Python 3-ish support (in HEAD)</h2>
+
+<p>In a series of twenty-something commits, I&#8217;ve updated everything I could find
+that might cause issues when running Meld on Python 3. This is a combination of
+things found by <a href="https://github.com/mitsuhiko/python-modernize">Python modernize</a>,
+<a href="http://docs.python.org/2/library/2to3.html">2to3</a>, and manual inspection. Due
+to my lack of a Python 3 PyGObject install, none of this is actually <em>tested</em>
+on Python 3, but it should all run on <code>-3</code> with no complaints.</p>
+
+<h2>Better version control interactions (in HEAD)</h2>
+
+<p>For ages, Meld has relied on a surprisingly-reliable-but-also-horrible way to
+get the repository version of a file that looks something like:</p>
+
+<ul>
+<li>Get the current version of the file</li>
+<li>Ask the VC for the diff between that file and the repository version</li>
+<li>Reverse apply that patch to the current version</li>
+<li>Hope&#8230;</li>
+</ul>
+
+
+<p>The last two steps failed on a fairly regular basis, particularly with
+Subversion, which <a href="https://bugzilla.gnome.org/show_bug.cgi?id=557615">loves</a>
+to <a href="https://bugzilla.gnome.org/show_bug.cgi?id=613685">lie</a> to us about what
+the actual differences are between your file and the repository. The method in
+current HEAD is somewhat more straightforward:</p>
+
+<ul>
+<li>Get the current version of the file</li>
+<li>Ask the VC for the previous version of the file</li>
+<li>Profit!</li>
+</ul>
+
+
+<p>While the second step has VC-specific wrinkles, it does get rid of a major pain
+point. The third step is as-yet untested. Currently only Git and Subversion use
+this method, but since almost all of Meld&#8217;s &#8216;couldn&#8217;t reverse-apply this patch&#8217;
+bugs are from Subversion, that&#8217;s probably fine.</p>
+
+<h2>Recent comparisons (coming soon)</h2>
+
+<p>Over the years, people have requested file histories, bookmarks, reopening old
+comparisons&#8230; all sorts of different ways to deal with common comparisons.
+Usually, people have a set of two or three repositories that they view on a
+daily basis, or a couple of directory pairs that they need to sync regularly.
+Our previous solution was to store history, but this just makes it easier to
+find what you want to compare; re-opening is no faster, and the UI was not
+great anyway.</p>
+
+<p>Landing soon is a change that provides a very hacky integration with the
+standard recent files mechanism. This includes opening recent comparisons from
+the <code>File</code> menu, and command-line support for opening files in our own very
+special &#8216;this is a comparison&#8217; format.</p>
+
+<p>It&#8217;s likely that this change will also spell the end for our clone of
+<a href="http://developer.gnome.org/libgnomeui/stable/GnomeFileEntry.html">GnomeFileEntry</a>;
+history support was the last thing keeping it alive. I&#8217;m sure not everyone will
+be happy with moving to <code>GtkFileChooserButton</code>s, but the writing has been on
+the wall for several years now, and it&#8217;s well past time to make the switch.</p>
+
+<h2>New comparison opening (coming soon-ish)</h2>
+
+<p>Meld has a long-standing problem with its &#8216;New&#8217; dialog. It doesn&#8217;t make a whole
+lot of sense, the workflow to actually create a new comparison for it is slow,
+and it&#8217;s not sufficiently obvious how you&#8217;re supposed to use it. For example,
+it&#8217;s not unusual to navigate to the folders you want to compare, only to
+realise that you can&#8217;t actually select the folders because you&#8217;ve tried to
+start a file comparison.</p>
+
+<p>Once the recent comparison feature has landed, the history-access aspect of the
+&#8216;New comparison&#8217; dialog can go away, which makes a new UI much easier and more
+useful. I&#8217;ve also chosen to do away with the dialog entirely, in favour of
+sticking the UI in a new top-level tab.</p>
+
+<p><img class="center" src="/images/blog/NewComparisonTab.png" title="New comparison tab" ></p>
+
+<p>Another nicety here is that we now actually support opening blank comparisons!
+You could always do this, but it wasn&#8217;t obvious to many people. One major use
+case here is pasting in clipboard fragments to be compared.</p>
+
+<p>While there are still some rough edges to be ironed out, I hope to land this
+sooner rather than later.</p>
+
+<h2>VC history comparisons (coming&#8230; sometime)</h2>
+
+<p>An offshoot of better VC integration is the ability to grab repository files
+from arbitrary revisions. Actually handling this sensibly is difficult however.
+We <em>could</em> just dump revisions to file and pass off file paths in <code>/tmp</code> as
+we currently do, but this really limits what we can do UI-wise. As such, I&#8217;m
+working on a revamped file comparison view that will handle browsing of
+previous revisions of VC-controlled files.</p>
+
+<p><img class="center" src="/images/blog/VCHistory.png" title="Version control history example" ></p>
+
+<p>Yes, changing the combo box works. No, the SHA won&#8217;t be the only indicator in
+the final UI. No, there&#8217;s no Subversion support; only Git and Mercurial so far.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -454,6 +591,10 @@ Statistics suggest that it will probably fail.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and local branches)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld fixes I&#8217;ll never get around to, August 2012 edition</a>
       </li>
     
@@ -467,10 +608,6 @@ Statistics suggest that it will probably fail.</p>
     
       <li class="post">
         <a href="/blog/2012/06/12/plucking-a-mallard/">Plucking a Mallard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/06/06/obligatory-first-post/">Obligatory first post</a>
       </li>
     
   </ul>
