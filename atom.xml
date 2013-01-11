@@ -4,7 +4,7 @@
   <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2012-12-08T07:37:35+10:00</updated>
+  <updated>2013-01-12T08:05:52+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The tale of the unwatched list]]></title>
+    <link href="http://kaiw.github.com/blog/2013/01/12/mailing-list/"/>
+    <updated>2013-01-12T07:39:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2013/01/12/mailing-list</id>
+    <content type="html"><![CDATA[<p>When I started maintaining Meld, a surprising number of accounts for new
+<strike>chores</strike> services entered my life. Inevitably, a few
+responsibilities were missed.</p>
+
+<p>For example, until very recently, I didn&#8217;t have admin access for the
+<a href="https://mail.gnome.org/mailman/listinfo/meld-list">Meld mailing list</a>.
+Since all posts to the list by non-members are held for moderation, I&#8217;m pretty
+sure that this means that all non-member list traffic over the last few years
+has been dropped on the floor.</p>
+
+<p>Whoops.</p>
+
+<p>What&#8217;s worse is that since I&#8217;ve started doing the moderation, there&#8217;s been
+a consistent trickle of messages needing approval. Meld&#8217;s list doesn&#8217;t exactly
+have a lot of traffic, so an extra message every couple of days is a
+significant boost.</p>
+
+<p>&#8230;all of which makes me wonder just how many people didn&#8217;t become involved
+in Meld due to an unwatched moderation queue.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Goings-on in Meld HEAD (and local branches)]]></title>
