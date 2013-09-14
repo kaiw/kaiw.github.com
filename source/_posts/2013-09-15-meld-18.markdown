@@ -1,0 +1,33 @@
+---
+layout: post
+title: "What's new in Meld 1.8?"
+date: 2013-09-15 08:59
+comments: true
+categories: [Meld]
+---
+
+Quite a bit!
+
+**File comparisons** are faster and interactivity is better while recomputing
+changes, and initial support was added for comparing files using
+synchronisation points.
+
+{% img right /images/blog/FolderColumns.png Extra columns in folder comparisons %}
+
+**Folder comparisons** now have extra columns so you can see more file information
+when doing your comparison. There is also a new shallow comparison option,
+speeding things up nicely for people dealing with folders full of huge files.
+
+**Version control view** has had some significant compatibility updates,
+culminating in the death of the dreaded 'patch failed' dialog, as Meld now
+uses more reliable ways of interacting with version control systems. Some big
+updates went in to support more commands, give better feedback, and do a
+better job of launching conflict comparisons.
+
+{% img left /images/blog/DarkTheme.png Support for custom themes %}
+
+**Meld** also received lots of little improvements here and there. We now have
+better themeability (a big deal for dark theme fans), support for relaunching
+recent comparisons, and a new UI for starting comparisons. Last but not least,
+Meld's Windows support has improved, and bundled installers are becoming
+available for Windows users (thanks to Keegan Witt).
