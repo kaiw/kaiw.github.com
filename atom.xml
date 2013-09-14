@@ -4,7 +4,7 @@
   <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2013-01-12T08:05:52+10:00</updated>
+  <updated>2013-09-15T09:06:42+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What's new in Meld 1.8?]]></title>
+    <link href="http://kaiw.github.com/blog/2013/09/15/meld-18/"/>
+    <updated>2013-09-15T08:59:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2013/09/15/meld-18</id>
+    <content type="html"><![CDATA[<p>Quite a bit!</p>
+
+<p><strong>File comparisons</strong> are faster and interactivity is better while recomputing
+changes, and initial support was added for comparing files using
+synchronisation points.</p>
+
+<p><img class="right" src="http://kaiw.github.com/images/blog/FolderColumns.png" title="Extra columns in folder comparisons" ></p>
+
+<p><strong>Folder comparisons</strong> now have extra columns so you can see more file information
+when doing your comparison. There is also a new shallow comparison option,
+speeding things up nicely for people dealing with folders full of huge files.</p>
+
+<p><strong>Version control view</strong> has had some significant compatibility updates,
+culminating in the death of the dreaded &#8216;patch failed&#8217; dialog, as Meld now
+uses more reliable ways of interacting with version control systems. Some big
+updates went in to support more commands, give better feedback, and do a
+better job of launching conflict comparisons.</p>
+
+<p><img class="left" src="http://kaiw.github.com/images/blog/DarkTheme.png" title="Support for custom themes" ></p>
+
+<p><strong>Meld</strong> also received lots of little improvements here and there. We now have
+better themeability (a big deal for dark theme fans), support for relaunching
+recent comparisons, and a new UI for starting comparisons. Last but not least,
+Meld&#8217;s Windows support has improved, and bundled installers are becoming
+available for Windows users (thanks to Keegan Witt).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The tale of the unwatched list]]></title>
