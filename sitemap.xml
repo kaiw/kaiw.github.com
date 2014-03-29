@@ -2,46 +2,54 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/</loc>
-        <lastmod>2012-06-06T07:56:33+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/</loc>
-        <lastmod>2012-06-13T21:33:41+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/</loc>
-        <lastmod>2012-06-28T06:52:45+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2012/07/09/tell-me-what-you-can%27t-do/</loc>
-        <lastmod>2012-07-09T17:42:09+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2012/08/31/meld-fixes-one-day-part-one/</loc>
-        <lastmod>2012-09-22T15:26:59+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2012/12/08/goings-on/</loc>
-        <lastmod>2012-12-08T07:37:35+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2013/01/12/mailing-list/</loc>
-        <lastmod>2013-01-12T08:03:49+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/2013/09/15/meld-18/</loc>
-        <lastmod>2013-09-15T09:03:22+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kaiw.github.com/blog/2014/03/29/features-people-have-never-asked-for/</loc>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/</loc>
-        <lastmod>2013-09-15T09:03:22+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kaiw.github.com/robots.txt</loc>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/</loc>
-        <lastmod>2013-09-15T09:03:22+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
     <url>
         <loc>http://kaiw.github.com/blog/archives/</loc>
-        <lastmod>2013-09-15T09:03:22+10:00</lastmod>
+        <lastmod>2014-03-29T10:20:10+10:00</lastmod>
     </url>
 </urlset>

@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Things that suck about Meld that I learned about by writing user help - Ambivalent Certainty</title>
+  <title>Things That Suck About Meld That I Learned About by Writing User Help - Ambivalent Certainty</title>
   <meta name="author" content="Kai Willadsen">
 
   
   <meta name="description" content="In any software that you work on, there are always pain points; there are
-things that you know aren&#8217;t great, but are low priority or hard to &hellip;">
+things that you know aren&rsquo;t great, but are low priority or hard to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,13 +19,14 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/">
+  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Ambivalent Certainty" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -60,7 +61,7 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:kaiw.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -105,15 +106,15 @@ things that you know aren&#8217;t great, but are low priority or hard to &hellip
 
 
 <div class="entry-content"><p>In any software that you work on, there are always pain points; there are
-things that you <em>know</em> aren&#8217;t great, but are low priority or hard to fix or
-would mean changing established behaviours. It&#8217;s when you sit down to document
+things that you <em>know</em> aren&rsquo;t great, but are low priority or hard to fix or
+would mean changing established behaviours. It&rsquo;s when you sit down to document
 how these things work that you realise <em>just how much these things suck</em>.</p>
 
-<p>If developers had to document the bizarre corners of their UI, I&#8217;m sure we&#8217;d
+<p>If developers had to document the bizarre corners of their UI, I&rsquo;m sure we&rsquo;d
 have far fewer bizarre corners. By way of example, while writing
-<a href="http://meldmerge.org">Meld&#8217;s</a> new help docs, I simply couldn&#8217;t
-bring myself to write the sentence &#8220;Toggle a case insensitive comparison by
-clicking &#8216;Case&#8217; on the toolbar&#8221;, so ended up rearranging the toolbar and fixing
+<a href="http://meldmerge.org">Meld&rsquo;s</a> new help docs, I simply couldn&rsquo;t
+bring myself to write the sentence &ldquo;Toggle a case insensitive comparison by
+clicking &lsquo;Case&rsquo; on the toolbar&rdquo;, so ended up rearranging the toolbar and fixing
 some labels. The world is better for it.</p>
 
 <p>The following is a very incomplete list of the things that made me feel ashamed
@@ -121,35 +122,35 @@ when documentating them.</p>
 
 <h2>Which file gets saved?</h2>
 
-<p>When you &#8220;Save&#8221;, Meld only saves the currently focussed file. This is mostly
+<p>When you &ldquo;Save&rdquo;, Meld only saves the currently focussed file. This is mostly
 sensible; the other option would be to save all files in the current
 comparison, which is often <em>not</em> what you want.</p>
 
-<p>However, this means explaining that we only save one file, and that&#8217;s the
-&#8216;focussed&#8217; file. What&#8217;s a focussed file? Oh, that&#8217;s the one that your cursor is
-currently in. What do you mean you can&#8217;t see the cursor? It&#8217;s that tiny
-one-pixel wide vertical bar in the&#8230; oh, right. Look, the focussed file is
-the last one you were editing&#8230; probably.</p>
+<p>However, this means explaining that we only save one file, and that&rsquo;s the
+&lsquo;focussed&rsquo; file. What&rsquo;s a focussed file? Oh, that&rsquo;s the one that your cursor is
+currently in. What do you mean you can&rsquo;t see the cursor? It&rsquo;s that tiny
+one-pixel wide vertical bar in the&hellip; oh, right. Look, the focussed file is
+the last one you were editing&hellip; probably.</p>
 
 <p>Actually, you know what? Forget it.</p>
 
-<p>I&#8217;m sorry.</p>
+<p>I&rsquo;m sorry.</p>
 
 <h2>Why are your shortcuts all different?</h2>
 
 <p>A while ago I fixed a long-standing request to be able to switch panes in
-file comparisons using the keyboard. Turns out I didn&#8217;t bother to apply the
-same method to folder comparisons, even though it&#8217;s <em>much</em> easier to do.
+file comparisons using the keyboard. Turns out I didn&rsquo;t bother to apply the
+same method to folder comparisons, even though it&rsquo;s <em>much</em> easier to do.
 Admittedly, adding this would mean that there were two ways of switching
 panes in directory comparisons, but at least one of those ways would be
 consistent across different comparison types.</p>
 
-<p>I&#8217;ll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
+<p>I&rsquo;ll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
 
 <h2>View » Hide? Case? What?</h2>
 
-<p>The menu item to toggle case-insensitive comparison was labelled &#8220;Case&#8221;,
-probably so that it would fit on the toolbar&#8230; but it&#8217;s not important enough
+<p>The menu item to toggle case-insensitive comparison was labelled &ldquo;Case&rdquo;,
+probably so that it would fit on the toolbar&hellip; but it&rsquo;s not important enough
 to warrant being on the toolbar anyway.
 <a href="http://git.gnome.org/browse/meld/commit/?id=3b24e07f65e8d5bd561c4925a487e15a64ce941a">Fixed</a>
 and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76e35f30e4ca5d046ca">fixed</a>.</p>
@@ -189,7 +190,7 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/28/things-I-learned-while-writing-help/" >Tweet</a>
   
   
   
@@ -222,23 +223,23 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/09/15/meld-18/">What's new in Meld 1.8?</a>
+        <a href="/blog/2014/03/29/features-people-have-never-asked-for/">Meld Features That People Have Never Asked For</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/12/mailing-list/">The tale of the unwatched list</a>
+        <a href="/blog/2013/09/15/meld-18/">What's New in Meld 1.8?</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and local branches)</a>
+        <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld fixes I'll never get around to, August 2012 edition</a>
+        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/07/09/tell-me-what-you-can%27t-do/">Tell me what you can't do</a>
+        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld Fixes I'll Never Get Around to, August 2012 Edition</a>
       </li>
     
   </ul>
@@ -256,7 +257,7 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Kai Willadsen -
+  Copyright &copy; 2014 - Kai Willadsen -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -274,7 +275,7 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -290,7 +291,7 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

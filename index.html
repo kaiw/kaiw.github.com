@@ -9,8 +9,7 @@
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="Quite a bit! File comparisons are faster and interactivity is better while recomputing
-changes, and initial support was added for comparing files &hellip;">
+  <meta name="description" content="People ask for new features all the time. Sometimes they&rsquo;re good ideas, sometimes&hellip; they&rsquo;re not. Sometimes there&rsquo;s a better &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,13 +18,14 @@ changes, and initial support was added for comparing files &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaiw.github.com/">
+  <link rel="canonical" href="http://kaiw.github.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Ambivalent Certainty" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -60,7 +60,7 @@ changes, and initial support was added for comparing files &hellip;">
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:kaiw.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -78,6 +78,58 @@ changes, and initial support was added for comparing files &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/29/features-people-have-never-asked-for/">Meld Features That People Have Never Asked For</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-29T09:45:00+10:00" pubdate data-updated="true">Mar 29<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>People ask for new features all the time. Sometimes they&rsquo;re good ideas, sometimes&hellip; they&rsquo;re not. Sometimes there&rsquo;s a better way to address the requested feature. However, to me it&rsquo;s interesting to contemplate the things that people <em>don&rsquo;t</em> ask for.</p>
+
+<h2>New Window</h2>
+
+<p>Meld is a single window app. It isn&rsquo;t designed that way&hellip; it&rsquo;s just that it&rsquo;s never supported anything else. No one has <em>ever</em> asked to be able to open a second window.</p>
+
+<p>In Meld 3.11.0, we now at least have the notion of windows, though we still don&rsquo;t actually have a &lsquo;New Window&rsquo; menu item. Maybe one day&hellip;</p>
+
+<h2>D-Bus API</h2>
+
+<p>Meld uses D-Bus to support some very limited single-instance features; specifically, you can open a comparison in a new tab. However, no one has ever expressed any interest in having an actual D-Bus API for Meld.</p>
+
+<h2>Move to Trash</h2>
+
+<p>We do some really terrifying things when handling folders and directories, the most obvious being that you can recursively and permanently delete folders from within a folder comparison. Permanently deleting files doesn&rsquo;t even prompt! Despite this being a pretty nasty example of not handling user error, no one has ever suggested that maybe we should be less insane.</p>
+
+<p>In Meld 3.11.0, we use GIO to &lsquo;trash&rsquo; things for us, which should do-the-right-thing on different platforms.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -120,7 +172,7 @@ when doing your comparison. There is also a new shallow comparison option,
 speeding things up nicely for people dealing with folders full of huge files.</p>
 
 <p><strong>Version control view</strong> has had some significant compatibility updates,
-culminating in the death of the dreaded &#8216;patch failed&#8217; dialog, as Meld now
+culminating in the death of the dreaded &lsquo;patch failed&rsquo; dialog, as Meld now
 uses more reliable ways of interacting with version control systems. Some big
 updates went in to support more commands, give better feedback, and do a
 better job of launching conflict comparisons.</p>
@@ -130,7 +182,7 @@ better job of launching conflict comparisons.</p>
 <p><strong>Meld</strong> also received lots of little improvements here and there. We now have
 better themeability (a big deal for dark theme fans), support for relaunching
 recent comparisons, and a new UI for starting comparisons. Last but not least,
-Meld&#8217;s Windows support has improved, and bundled installers are becoming
+Meld&rsquo;s Windows support has improved, and bundled installers are becoming
 available for Windows users (thanks to Keegan Witt).</p>
 </div>
   
@@ -171,20 +223,20 @@ available for Windows users (thanks to Keegan Witt).</p>
 <strike>chores</strike> services entered my life. Inevitably, a few
 responsibilities were missed.</p>
 
-<p>For example, until very recently, I didn&#8217;t have admin access for the
+<p>For example, until very recently, I didn&rsquo;t have admin access for the
 <a href="https://mail.gnome.org/mailman/listinfo/meld-list">Meld mailing list</a>.
-Since all posts to the list by non-members are held for moderation, I&#8217;m pretty
+Since all posts to the list by non-members are held for moderation, I&rsquo;m pretty
 sure that this means that all non-member list traffic over the last few years
 has been dropped on the floor.</p>
 
 <p>Whoops.</p>
 
-<p>What&#8217;s worse is that since I&#8217;ve started doing the moderation, there&#8217;s been
-a consistent trickle of messages needing approval. Meld&#8217;s list doesn&#8217;t exactly
+<p>What&rsquo;s worse is that since I&rsquo;ve started doing the moderation, there&rsquo;s been
+a consistent trickle of messages needing approval. Meld&rsquo;s list doesn&rsquo;t exactly
 have a lot of traffic, so an extra message every couple of days is a
 significant boost.</p>
 
-<p>&#8230;all of which makes me wonder just how many people didn&#8217;t become involved
+<p>&hellip;all of which makes me wonder just how many people didn&rsquo;t become involved
 in Meld due to an unwatched moderation queue.</p>
 </div>
   
@@ -221,14 +273,14 @@ in Meld due to an unwatched moderation queue.</p>
   </header>
 
 
-  <div class="entry-content"><p>Git HEAD can be an interesting place. It&#8217;s actually not that scary right now,
-but there have been a few interesting changes go in. There&#8217;s also some cool
+  <div class="entry-content"><p>Git HEAD can be an interesting place. It&rsquo;s actually not that scary right now,
+but there have been a few interesting changes go in. There&rsquo;s also some cool
 stuff in the pipeline. As usual, however, that will all take an indeterminate
 period of time to arrive.</p>
 
 <h2>Python 3-ish support (in HEAD)</h2>
 
-<p>In a series of twenty-something commits, I&#8217;ve updated everything I could find
+<p>In a series of twenty-something commits, I&rsquo;ve updated everything I could find
 that might cause issues when running Meld on Python 3. This is a combination of
 things found by <a href="https://github.com/mitsuhiko/python-modernize">Python modernize</a>,
 <a href="http://docs.python.org/2/library/2to3.html">2to3</a>, and manual inspection. Due
@@ -244,7 +296,7 @@ get the repository version of a file that looks something like:</p>
 <li>Get the current version of the file</li>
 <li>Ask the VC for the diff between that file and the repository version</li>
 <li>Reverse apply that patch to the current version</li>
-<li>Hope&#8230;</li>
+<li>Hope&hellip;</li>
 </ul>
 
 
@@ -263,13 +315,13 @@ current HEAD is somewhat more straightforward:</p>
 
 <p>While the second step has VC-specific wrinkles, it does get rid of a major pain
 point. The third step is as-yet untested. Currently only Git and Subversion use
-this method, but since almost all of Meld&#8217;s &#8216;couldn&#8217;t reverse-apply this patch&#8217;
-bugs are from Subversion, that&#8217;s probably fine.</p>
+this method, but since almost all of Meld&rsquo;s &lsquo;couldn&rsquo;t reverse-apply this patch&rsquo;
+bugs are from Subversion, that&rsquo;s probably fine.</p>
 
 <h2>Recent comparisons (coming soon)</h2>
 
 <p>Over the years, people have requested file histories, bookmarks, reopening old
-comparisons&#8230; all sorts of different ways to deal with common comparisons.
+comparisons&hellip; all sorts of different ways to deal with common comparisons.
 Usually, people have a set of two or three repositories that they view on a
 daily basis, or a couple of directory pairs that they need to sync regularly.
 Our previous solution was to store history, but this just makes it easier to
@@ -279,50 +331,50 @@ great anyway.</p>
 <p>Landing soon is a change that provides a very hacky integration with the
 standard recent files mechanism. This includes opening recent comparisons from
 the <code>File</code> menu, and command-line support for opening files in our own very
-special &#8216;this is a comparison&#8217; format.</p>
+special &lsquo;this is a comparison&rsquo; format.</p>
 
-<p>It&#8217;s likely that this change will also spell the end for our clone of
+<p>It&rsquo;s likely that this change will also spell the end for our clone of
 <a href="http://developer.gnome.org/libgnomeui/stable/GnomeFileEntry.html">GnomeFileEntry</a>;
-history support was the last thing keeping it alive. I&#8217;m sure not everyone will
+history support was the last thing keeping it alive. I&rsquo;m sure not everyone will
 be happy with moving to <code>GtkFileChooserButton</code>s, but the writing has been on
-the wall for several years now, and it&#8217;s well past time to make the switch.</p>
+the wall for several years now, and it&rsquo;s well past time to make the switch.</p>
 
 <h2>New comparison opening (coming soon-ish)</h2>
 
-<p>Meld has a long-standing problem with its &#8216;New&#8217; dialog. It doesn&#8217;t make a whole
+<p>Meld has a long-standing problem with its &lsquo;New&rsquo; dialog. It doesn&rsquo;t make a whole
 lot of sense, the workflow to actually create a new comparison for it is slow,
-and it&#8217;s not sufficiently obvious how you&#8217;re supposed to use it. For example,
-it&#8217;s not unusual to navigate to the folders you want to compare, only to
-realise that you can&#8217;t actually select the folders because you&#8217;ve tried to
+and it&rsquo;s not sufficiently obvious how you&rsquo;re supposed to use it. For example,
+it&rsquo;s not unusual to navigate to the folders you want to compare, only to
+realise that you can&rsquo;t actually select the folders because you&rsquo;ve tried to
 start a file comparison.</p>
 
 <p>Once the recent comparison feature has landed, the history-access aspect of the
-&#8216;New comparison&#8217; dialog can go away, which makes a new UI much easier and more
-useful. I&#8217;ve also chosen to do away with the dialog entirely, in favour of
+&lsquo;New comparison&rsquo; dialog can go away, which makes a new UI much easier and more
+useful. I&rsquo;ve also chosen to do away with the dialog entirely, in favour of
 sticking the UI in a new top-level tab.</p>
 
 <p><img class="center" src="/images/blog/NewComparisonTab.png" title="New comparison tab" ></p>
 
 <p>Another nicety here is that we now actually support opening blank comparisons!
-You could always do this, but it wasn&#8217;t obvious to many people. One major use
+You could always do this, but it wasn&rsquo;t obvious to many people. One major use
 case here is pasting in clipboard fragments to be compared.</p>
 
 <p>While there are still some rough edges to be ironed out, I hope to land this
 sooner rather than later.</p>
 
-<h2>VC history comparisons (coming&#8230; sometime)</h2>
+<h2>VC history comparisons (coming&hellip; sometime)</h2>
 
 <p>An offshoot of better VC integration is the ability to grab repository files
 from arbitrary revisions. Actually handling this sensibly is difficult however.
 We <em>could</em> just dump revisions to file and pass off file paths in <code>/tmp</code> as
-we currently do, but this really limits what we can do UI-wise. As such, I&#8217;m
+we currently do, but this really limits what we can do UI-wise. As such, I&rsquo;m
 working on a revamped file comparison view that will handle browsing of
 previous revisions of VC-controlled files.</p>
 
 <p><img class="center" src="/images/blog/VCHistory.png" title="Version control history example" ></p>
 
-<p>Yes, changing the combo box works. No, the SHA won&#8217;t be the only indicator in
-the final UI. No, there&#8217;s no Subversion support; only Git and Mercurial so far.</p>
+<p>Yes, changing the combo box works. No, the SHA won&rsquo;t be the only indicator in
+the final UI. No, there&rsquo;s no Subversion support; only Git and Mercurial so far.</p>
 </div>
   
   
@@ -358,24 +410,24 @@ the final UI. No, there&#8217;s no Subversion support; only Git and Mercurial so
   </header>
 
 
-  <div class="entry-content"><p>Our automatic merging commands &#8216;Merge from left&#8217;, &#8216;Merge from right&#8217; and
-&#8216;Merge all&#8217; depend on the focussed pane. There are two problems with this.</p>
+  <div class="entry-content"><p>Our automatic merging commands &lsquo;Merge from left&rsquo;, &lsquo;Merge from right&rsquo; and
+&lsquo;Merge all&rsquo; depend on the focussed pane. There are two problems with this.</p>
 
 <p>Firstly, for most people, merging goes from the outsides to the middle, and
 never in reverse. The reason is that this is how it works for version control;
 merging in VC always (not actually, but close enough) involves making changes
 to <em>one</em> file with reference to the other two. As such, it would be reasonable
-to expect that &#8216;Merge from left&#8217; actually merged all of the left pane changes
+to expect that &lsquo;Merge from left&rsquo; actually merged all of the left pane changes
 into the middle pane, regardless of where the cursor was.</p>
 
-<p>The second problem is that &#8216;Merge all&#8217; makes <em>absolutely no sense</em> in any pane
-other than the middle; it&#8217;s identical to &#8216;Merge from right&#8217; in the left pane,
-or &#8216;Merge from left&#8217; in the right pane, but more confusing.</p>
+<p>The second problem is that &lsquo;Merge all&rsquo; makes <em>absolutely no sense</em> in any pane
+other than the middle; it&rsquo;s identical to &lsquo;Merge from right&rsquo; in the left pane,
+or &lsquo;Merge from left&rsquo; in the right pane, but more confusing.</p>
 
 <p>One option would be to rework these commands so that they only ever operated
 on the middle pane. Another option would be to add some dynamic labelling so
 that it was clear what the menu item did before you clicked it. Without
-knowing how widely used these actions are, and what people use them for, it&#8217;s
+knowing how widely used these actions are, and what people use them for, it&rsquo;s
 hard to know what the best option is.</p>
 </div>
   
@@ -412,28 +464,28 @@ hard to know what the best option is.</p>
   </header>
 
 
-  <div class="entry-content"><p>When writing Meld&#8217;s <a href="http://meldmerge.org/help/">new documentation</a>, I added
+  <div class="entry-content"><p>When writing Meld&rsquo;s <a href="http://meldmerge.org/help/">new documentation</a>, I added
 a section that I wish every software project had:
-<a href="http://meldmerge.org/help/missing-functionality.html">&#8220;Things that Meld doesn&#8217;t do&#8221;</a>.</p>
+<a href="http://meldmerge.org/help/missing-functionality.html">&ldquo;Things that Meld doesn&rsquo;t do&rdquo;</a>.</p>
 
-<p>Everyone&#8217;s had the experience of spending hours trying to figure out how to
+<p>Everyone&rsquo;s had the experience of spending hours trying to figure out how to
 do &lt;insert task here&gt; with &lt;tool of choice&gt;, because <em>obviously</em>
 &lt;tool of choice&gt; <em>must</em> be able to do &lt;insert task here&gt;. Many
 years ago I remember trying to figure out how to create a histogram with
-Excel&#8212;ludicrously obvious functionality for a spreadsheet&#8212;but at the time
+Excel&mdash;-ludicrously obvious functionality for a spreadsheet&mdash;-but at the time
 it was all-but-impossible without a third-party commercial add-on.</p>
 
-<p>If &#8216;stuff we don&#8217;t do&#8217; is documented at all, it&#8217;s often relegated to a point in
+<p>If &lsquo;stuff we don&rsquo;t do&rsquo; is documented at all, it&rsquo;s often relegated to a point in
 the FAQ (e.g.,
 <a href="http://projects.gnome.org/gnumeric/faq.shtml#6">Gnumeric and pivot tables</a>),
 which is okay as long as it shows up in a simple search. Ideally though, I feel
 like software should do a better job of telling you both what it can do, and
-what it can&#8217;t.</p>
+what it can&rsquo;t.</p>
 
-<p>Spending time only to find out that a tool can&#8217;t solve your problem is an
+<p>Spending time only to find out that a tool can&rsquo;t solve your problem is an
 incredibly frustrating experience.</p>
 
-<p>Exposing your limitations might feel like bad marketing, but ultimately you&#8217;ll
+<p>Exposing your limitations might feel like bad marketing, but ultimately you&rsquo;ll
 end up with fewer unhappy users.</p>
 </div>
   
@@ -471,15 +523,15 @@ end up with fewer unhappy users.</p>
 
 
   <div class="entry-content"><p>In any software that you work on, there are always pain points; there are
-things that you <em>know</em> aren&#8217;t great, but are low priority or hard to fix or
-would mean changing established behaviours. It&#8217;s when you sit down to document
+things that you <em>know</em> aren&rsquo;t great, but are low priority or hard to fix or
+would mean changing established behaviours. It&rsquo;s when you sit down to document
 how these things work that you realise <em>just how much these things suck</em>.</p>
 
-<p>If developers had to document the bizarre corners of their UI, I&#8217;m sure we&#8217;d
+<p>If developers had to document the bizarre corners of their UI, I&rsquo;m sure we&rsquo;d
 have far fewer bizarre corners. By way of example, while writing
-<a href="http://meldmerge.org">Meld&#8217;s</a> new help docs, I simply couldn&#8217;t
-bring myself to write the sentence &#8220;Toggle a case insensitive comparison by
-clicking &#8216;Case&#8217; on the toolbar&#8221;, so ended up rearranging the toolbar and fixing
+<a href="http://meldmerge.org">Meld&rsquo;s</a> new help docs, I simply couldn&rsquo;t
+bring myself to write the sentence &ldquo;Toggle a case insensitive comparison by
+clicking &lsquo;Case&rsquo; on the toolbar&rdquo;, so ended up rearranging the toolbar and fixing
 some labels. The world is better for it.</p>
 
 <p>The following is a very incomplete list of the things that made me feel ashamed
@@ -487,35 +539,35 @@ when documentating them.</p>
 
 <h2>Which file gets saved?</h2>
 
-<p>When you &#8220;Save&#8221;, Meld only saves the currently focussed file. This is mostly
+<p>When you &ldquo;Save&rdquo;, Meld only saves the currently focussed file. This is mostly
 sensible; the other option would be to save all files in the current
 comparison, which is often <em>not</em> what you want.</p>
 
-<p>However, this means explaining that we only save one file, and that&#8217;s the
-&#8216;focussed&#8217; file. What&#8217;s a focussed file? Oh, that&#8217;s the one that your cursor is
-currently in. What do you mean you can&#8217;t see the cursor? It&#8217;s that tiny
-one-pixel wide vertical bar in the&#8230; oh, right. Look, the focussed file is
-the last one you were editing&#8230; probably.</p>
+<p>However, this means explaining that we only save one file, and that&rsquo;s the
+&lsquo;focussed&rsquo; file. What&rsquo;s a focussed file? Oh, that&rsquo;s the one that your cursor is
+currently in. What do you mean you can&rsquo;t see the cursor? It&rsquo;s that tiny
+one-pixel wide vertical bar in the&hellip; oh, right. Look, the focussed file is
+the last one you were editing&hellip; probably.</p>
 
 <p>Actually, you know what? Forget it.</p>
 
-<p>I&#8217;m sorry.</p>
+<p>I&rsquo;m sorry.</p>
 
 <h2>Why are your shortcuts all different?</h2>
 
 <p>A while ago I fixed a long-standing request to be able to switch panes in
-file comparisons using the keyboard. Turns out I didn&#8217;t bother to apply the
-same method to folder comparisons, even though it&#8217;s <em>much</em> easier to do.
+file comparisons using the keyboard. Turns out I didn&rsquo;t bother to apply the
+same method to folder comparisons, even though it&rsquo;s <em>much</em> easier to do.
 Admittedly, adding this would mean that there were two ways of switching
 panes in directory comparisons, but at least one of those ways would be
 consistent across different comparison types.</p>
 
-<p>I&#8217;ll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
+<p>I&rsquo;ll <a href="https://bugzilla.gnome.org/show_bug.cgi?id=679007">fix this</a> eventually.</p>
 
 <h2>View » Hide? Case? What?</h2>
 
-<p>The menu item to toggle case-insensitive comparison was labelled &#8220;Case&#8221;,
-probably so that it would fit on the toolbar&#8230; but it&#8217;s not important enough
+<p>The menu item to toggle case-insensitive comparison was labelled &ldquo;Case&rdquo;,
+probably so that it would fit on the toolbar&hellip; but it&rsquo;s not important enough
 to warrant being on the toolbar anyway.
 <a href="http://git.gnome.org/browse/meld/commit/?id=3b24e07f65e8d5bd561c4925a487e15a64ce941a">Fixed</a>
 and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76e35f30e4ca5d046ca">fixed</a>.</p>
@@ -557,8 +609,8 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
   <div class="entry-content"><p>Meld is in the process of getting nice new shiny
 <a href="http://projectmallard.org/">Mallard</a>-based documentation. There are several
 things standing in the way of getting our new help actually distributed with
-Meld &#8212; not least of which being that I haven&#8217;t yet pushed it to Git &#8212; but
-there&#8217;s nothing much stopping me from making it available on the
+Meld &mdash;&ndash; not least of which being that I haven&rsquo;t yet pushed it to Git &mdash;&ndash; but
+there&rsquo;s nothing much stopping me from making it available on the
 <a href="http://meldmerge.org/">Meld website</a>.</p>
 
 <p>Putting the Mallard docs online involved:</p>
@@ -572,7 +624,7 @@ there&#8217;s nothing much stopping me from making it available on the
 
 <h2>Mallard to HTML</h2>
 
-<p>While it&#8217;s sadly not obvious that you can do this, you can use
+<p>While it&rsquo;s sadly not obvious that you can do this, you can use
 <code>gnome-doc-utils</code> to
 <a href="http://projectmallard.org/pipermail/mallard-list_projectmallard.org/2010-November/000037.html">generate fairly straightforward HTML and accompanying CSS</a>
 from Mallard documentation.</p>
@@ -581,7 +633,7 @@ from Mallard documentation.</p>
 gnome-doc-tool html -c index.css --copy-graphics *.page
 </code></pre>
 
-<p>You&#8217;ll get an HTML page for each Mallard page, and it&#8217;ll all link to the
+<p>You&rsquo;ll get an HTML page for each Mallard page, and it&rsquo;ll all link to the
 external CSS. No drama here.</p>
 
 <h2>Stripping the HTML</h2>
@@ -589,8 +641,8 @@ external CSS. No drama here.</p>
 <p>The HTML generated is designed to be stand-alone. However, we want to be able
 to embed it in an existing webpage. Doing the simplest and hackiest thing
 available, I used BeautifulSoup to just pull out the contents of the body, add
-a header for Jekyll (Meld&#8217;s site is hosted on GitHub) and rewrite the new
-&#8216;HTML&#8217;.</p>
+a header for Jekyll (Meld&rsquo;s site is hosted on GitHub) and rewrite the new
+&lsquo;HTML&rsquo;.</p>
 
 <p>I added a new Jekyll layout to be used for the help pages, and wrapped the
 whole help content block in a <code>#help-content</code> <code>div</code>.</p>
@@ -598,7 +650,7 @@ whole help content block in a <code>#help-content</code> <code>div</code>.</p>
 <h2>Massaging the CSS</h2>
 
 <p>The generated CSS is all top-level rules and whatnot. Worse yet, it uses
-<em>sensible</em> class names like &#8220;title&#8221;, so you&#8217;re bound to have conflicting
+<em>sensible</em> class names like &ldquo;title&rdquo;, so you&rsquo;re bound to have conflicting
 classes in an existing site. Again doing the stupidest thing that would work,
 I wrapped the whole CSS file in:</p>
 
@@ -646,7 +698,7 @@ additional (evil) styling overrides:</p>
 
 <p>and it looks pretty much like a sensibly-embedded Mallard page.</p>
 
-<p>It&#8217;s a pile of dirty hacks, but now at least Windows users can read our
+<p>It&rsquo;s a pile of dirty hacks, but now at least Windows users can read our
 documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
 </div>
   
@@ -705,23 +757,23 @@ Statistics suggest that it will probably fail.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/09/15/meld-18/">What&#8217;s new in Meld 1.8?</a>
+        <a href="/blog/2014/03/29/features-people-have-never-asked-for/">Meld Features That People Have Never Asked For</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/12/mailing-list/">The tale of the unwatched list</a>
+        <a href="/blog/2013/09/15/meld-18/">What&#8217;s New in Meld 1.8?</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and local branches)</a>
+        <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld fixes I&#8217;ll never get around to, August 2012 edition</a>
+        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/07/09/tell-me-what-you-can%27t-do/">Tell me what you can&#8217;t do</a>
+        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld Fixes I&#8217;ll Never Get Around to, August 2012 Edition</a>
       </li>
     
   </ul>
@@ -738,7 +790,7 @@ Statistics suggest that it will probably fail.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Kai Willadsen -
+  Copyright &copy; 2014 - Kai Willadsen -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -753,7 +805,7 @@ Statistics suggest that it will probably fail.</p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -769,7 +821,7 @@ Statistics suggest that it will probably fail.</p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

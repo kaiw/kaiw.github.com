@@ -20,13 +20,14 @@ things standing in the way of getting our new help &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/">
+  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Ambivalent Certainty" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -61,7 +62,7 @@ things standing in the way of getting our new help &hellip;">
   
 </ul>
   
-<form action="http://google.com/search" method="get">
+<form action="https://google.com/search" method="get">
   <fieldset role="search">
     <input type="hidden" name="q" value="site:kaiw.github.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
@@ -108,8 +109,8 @@ things standing in the way of getting our new help &hellip;">
 <div class="entry-content"><p>Meld is in the process of getting nice new shiny
 <a href="http://projectmallard.org/">Mallard</a>-based documentation. There are several
 things standing in the way of getting our new help actually distributed with
-Meld &#8212; not least of which being that I haven&#8217;t yet pushed it to Git &#8212; but
-there&#8217;s nothing much stopping me from making it available on the
+Meld &mdash;&ndash; not least of which being that I haven&rsquo;t yet pushed it to Git &mdash;&ndash; but
+there&rsquo;s nothing much stopping me from making it available on the
 <a href="http://meldmerge.org/">Meld website</a>.</p>
 
 <p>Putting the Mallard docs online involved:</p>
@@ -123,7 +124,7 @@ there&#8217;s nothing much stopping me from making it available on the
 
 <h2>Mallard to HTML</h2>
 
-<p>While it&#8217;s sadly not obvious that you can do this, you can use
+<p>While it&rsquo;s sadly not obvious that you can do this, you can use
 <code>gnome-doc-utils</code> to
 <a href="http://projectmallard.org/pipermail/mallard-list_projectmallard.org/2010-November/000037.html">generate fairly straightforward HTML and accompanying CSS</a>
 from Mallard documentation.</p>
@@ -132,7 +133,7 @@ from Mallard documentation.</p>
 gnome-doc-tool html -c index.css --copy-graphics *.page
 </code></pre>
 
-<p>You&#8217;ll get an HTML page for each Mallard page, and it&#8217;ll all link to the
+<p>You&rsquo;ll get an HTML page for each Mallard page, and it&rsquo;ll all link to the
 external CSS. No drama here.</p>
 
 <h2>Stripping the HTML</h2>
@@ -140,8 +141,8 @@ external CSS. No drama here.</p>
 <p>The HTML generated is designed to be stand-alone. However, we want to be able
 to embed it in an existing webpage. Doing the simplest and hackiest thing
 available, I used BeautifulSoup to just pull out the contents of the body, add
-a header for Jekyll (Meld&#8217;s site is hosted on GitHub) and rewrite the new
-&#8216;HTML&#8217;.</p>
+a header for Jekyll (Meld&rsquo;s site is hosted on GitHub) and rewrite the new
+&lsquo;HTML&rsquo;.</p>
 
 <p>I added a new Jekyll layout to be used for the help pages, and wrapped the
 whole help content block in a <code>#help-content</code> <code>div</code>.</p>
@@ -149,7 +150,7 @@ whole help content block in a <code>#help-content</code> <code>div</code>.</p>
 <h2>Massaging the CSS</h2>
 
 <p>The generated CSS is all top-level rules and whatnot. Worse yet, it uses
-<em>sensible</em> class names like &#8220;title&#8221;, so you&#8217;re bound to have conflicting
+<em>sensible</em> class names like &ldquo;title&rdquo;, so you&rsquo;re bound to have conflicting
 classes in an existing site. Again doing the stupidest thing that would work,
 I wrapped the whole CSS file in:</p>
 
@@ -197,7 +198,7 @@ additional (evil) styling overrides:</p>
 
 <p>and it looks pretty much like a sensibly-embedded Mallard page.</p>
 
-<p>It&#8217;s a pile of dirty hacks, but now at least Windows users can read our
+<p>It&rsquo;s a pile of dirty hacks, but now at least Windows users can read our
 documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
 </div>
 
@@ -235,7 +236,7 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/12/plucking-a-mallard/" >Tweet</a>
   
   
   
@@ -268,23 +269,23 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/09/15/meld-18/">What's new in Meld 1.8?</a>
+        <a href="/blog/2014/03/29/features-people-have-never-asked-for/">Meld Features That People Have Never Asked For</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/01/12/mailing-list/">The tale of the unwatched list</a>
+        <a href="/blog/2013/09/15/meld-18/">What's New in Meld 1.8?</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and local branches)</a>
+        <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld fixes I'll never get around to, August 2012 edition</a>
+        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/07/09/tell-me-what-you-can%27t-do/">Tell me what you can't do</a>
+        <a href="/blog/2012/08/31/meld-fixes-one-day-part-one/">Meld Fixes I'll Never Get Around to, August 2012 Edition</a>
       </li>
     
   </ul>
@@ -302,7 +303,7 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Kai Willadsen -
+  Copyright &copy; 2014 - Kai Willadsen -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
@@ -320,7 +321,7 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -336,7 +337,7 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
