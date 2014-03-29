@@ -6,7 +6,7 @@ url: http://kaiw.github.com
 title: Ambivalent Certainty
 subtitle: One of these options <em>must</em> be correct
 author: Kai Willadsen
-simple_search: http://google.com/search
+simple_search: https://google.com/search
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -34,6 +34,11 @@ plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
 markdown: rdiscount
+rdiscount:
+  extensions:
+    - autolink
+    - footnotes
+    - smart
 pygments: false # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
