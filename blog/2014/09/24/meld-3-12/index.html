@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>What's New in Meld 3.12 - Ambivalent Certainty</title>
+  <meta name="author" content="Kai Willadsen">
+
+  
+  <meta name="description" content="After an unexpectedly long transition, Meld 3.12 is the first stable release
+of Meld based on GTK+ 3. As usual, plenty has changed. While a lot of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://kaiw.github.com/blog/2014/09/24/meld-3-12">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ambivalent Certainty" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33028331-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Ambivalent Certainty</a></h1>
+  
+    <h2>One of these options <em>must</em> be correct</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:kaiw.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">What's New in Meld 3.12</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-24T07:40:00+10:00" pubdate data-updated="true">Sep 24<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After an unexpectedly long transition, Meld 3.12 is the first stable release
+of Meld based on GTK+ 3. As usual, plenty has changed. While a lot of work
+this time around was behind the scenes, some of that work has enabled cool new
+features as well.</p>
+
+<h2>Appearance</h2>
+
+<p>Everything looks&hellip; newer. With the update to GTK+ 3, we&rsquo;ve removed the use of
+some older widgets&mdash;most notably the old-style file selectors&mdash;and
+somewhat modernised the layout and overall visual appearance. We&rsquo;ve also
+cleaned up some icons to be a little more balanced, and updated the overall
+colour scheme. While not ready yet, the next release cycle will also see
+support for global dark theme settings.</p>
+
+<p><img class="left" src="/images/blog/3-12-theme.png" title="Theme improvements for 3.12" >
+<img class="right" src="/images/blog/3-13-theme-dark.png" title="Upcoming dark theme support" ></p>
+
+<div style="clear: both;"></div>
+
+
+<p>Under GNOME Shell, Meld will integrate into the GNOME 3 style application
+menu, and we&rsquo;ll fall back to adding a new &ldquo;Meld&rdquo; menu for other platforms.</p>
+
+<h2>Comparisons</h2>
+
+<p>Pane resizing&mdash;a long-standing feature request, finally picked up by
+Marco Brito&mdash;has been merged. Hopefully this will make comparisons easier
+for those of you who stuck trying to do a three-way merge on a 13&#8221; screen.</p>
+
+<p>File comparisons now show a notification if a file is modified outside of
+Meld, and prompt to reload. We also display better labels for file comparisons
+launched from version control, so you should no longer see useless temporary
+file names here.</p>
+
+<p>In folder comparisons, if you have a folder that&rsquo;s empty after filtering has
+been applied, that folder will (finally) be correctly trimmed from the tree.
+We also now use normal desktop trash handling for file operations, instead of
+just deleting things forever without warning&hellip;</p>
+
+<p><img class="right" src="/images/blog/conflict-dialog.png" title="Marking conflicts resolved" ></p>
+
+<p>On the version control side of things, we have some support for showing file
+metadata, including renames thanks to Louis des Landes. Currently this is only
+used by Bazaar, but we&rsquo;ll hopefully extend this support to Git and Mercurial
+soon. Finally, as a handy touch, for conflict resolutions that you start from
+a Meld version control tab, we now prompt to mark a conflict as resolved when
+you close the file comparison.</p>
+
+<div style="clear: both;"></div>
+
+
+<h2>Help and translation</h2>
+
+<p><img class="right" src="/images/blog/yelp-help.png" title="Yelp browsing new Meld help" ></p>
+
+<p>Meld now uses Mallard for documentation, and there&rsquo;s a <strike>hack</strike>
+script that we use to provide <a href="http://meldmerge.org/help/">online help</a> for
+non-GNOME platforms.</p>
+
+<p>Thanks to the thoroughly awesome GNOME Translation Teams, Meld&rsquo;s translations
+are <a href="https://l10n.gnome.org/module/meld/">looking good</a>, with several full
+translations for the new manual as well! Of course, our translation coverage
+could always be better, so if you notice gaps in your native language support,
+please consider <a href="https://l10n.gnome.org/teams/">joining a team</a> to help out.</p>
+
+<div style="clear: both;"></div>
+
+
+<h2>Windows support</h2>
+
+<p>While Meld has worked on Windows for some time, we are now building and
+distributing stand-alone Windows installers for Meld. Some of our Windows
+support is still a little rough around the edges, but with more users and a
+better distribution story, you can expect to see this situation continue to
+improve in the coming release cycles. Thanks go to Keegan Witt for maintaining
+the unofficial binary distribution, and for helping out with the transition.</p>
+
+<h2>Behind the scenes</h2>
+
+<p>Meld is now a single-instance application, using the GtkApplication model. By
+default Meld will still use multiple windows, and each command-line process
+will wait until its window has closed, so from a user point of view, very
+little should change.</p>
+
+<p>With the transition to the newer GTK+ 3 platform and related tools, we&rsquo;ve also
+cleaned up tonnes of unpleasant code. Preferences handling has been rewritten,
+our custom colours are CSS-themed and we&rsquo;ve moved to making heavier use of the
+excellent GtkSourceView library.</p>
+
+<h2>Future plans</h2>
+
+<p>By the time you read this, 3.12 will probably have already branched, and some
+pending stuff for 3.13 will be going in. My list of things-to-merge already
+includes incremental find for file comparisons, better dark theme support, and
+a rework of conflict resolution mode to show a combination of the pre-merged
+file with ancestor information for conflicting sections.</p>
+
+<p>If you&rsquo;d like to get involved with Meld development then please get in
+touch on the mailing list: <a href="mailto:meld-list@gnome.org">meld-list@gnome.org</a>.</p>
+
+<h2>Thanks</h2>
+
+<p>Thanks to everyone who contributed to the release, whether through features,
+translations or bugfixes:
+Andika Triwidada, Bartosz Dziewoński, Ben Ross,
+Benjamin Steinwender, Casey, Christoph Brill, Daniel Mustieles, Daniel Pantea,
+Dimitris Spingos, Dominique Leuenberger, Enrico Nicoletto, Facundo Dario
+Illanes, fr33domlover, Fran Diéguez, Gabor Kelemen, Gianni Trovisi, Inaki
+Larranaga Murgoitio, Jiri Grönroos, Josef Andersson, Kai Willadsen, Lars
+Wendler, Lasse Liehu, Louis des Landes, Marco Brito, Marek Černocký, Matej
+Urbančič, Milo Casagrande, Peter Tyser, Piotr Drąg, Rafael Ferreira, Thomas
+Klausner, Tom Scytale, Tom Tryfonidis, Ville-Pekka Vainio, Yuri Myasoedov,
+zodiac111, Özgür Sarıer, Мирослав Николић</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Kai Willadsen</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-24T07:40:00+10:00" pubdate data-updated="true">Sep 24<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/meld/'>Meld</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2014/09/24/meld-3-12/" data-via="" data-counturl="http://kaiw.github.com/blog/2014/09/24/meld-3-12/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/29/features-people-have-never-asked-for/" title="Previous Post: Meld features that people have never asked for">&laquo; Meld features that people have never asked for</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/24/meld-3-12/">What's New in Meld 3.12</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/29/features-people-have-never-asked-for/">Meld Features That People Have Never Asked For</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/15/meld-18/">What's New in Meld 1.8?</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Kai Willadsen -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ambivalentcertainty';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://kaiw.github.com/blog/2014/09/24/meld-3-12/';
+        var disqus_url = 'http://kaiw.github.com/blog/2014/09/24/meld-3-12/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
