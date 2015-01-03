@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meld | Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/blog/categories/meld/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2014-09-27T08:15:03+10:00</updated>
+  <updated>2015-01-04T07:12:16+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Life as a GTK+ app developer]]></title>
+    <link href="http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/"/>
+    <updated>2015-01-04T07:09:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer</id>
+    <content type="html"><![CDATA[<p>The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions,
+so it seemed reasonable to expect that by the time the port was done, many
+users would have access to it. In fact, it took way longer than I&rsquo;d hoped and
+the GTK+ 3 port was released at about the same time as GTK+ 3.14 came out,
+which then broke everything.</p>
+
+<h2>GtkTextView/GtkSourceView painting</h2>
+
+<p>Drawing in GtkTextView and GtkSourceView changed to use a new API involved
+drawing of layers, and changed how the background was drawn. The new API is
+actually really nice and will be great to use, but&hellip;</p>
+
+<p>&hellip;well, it broke everything. The custom painting that Meld does all over the
+textview was broken, and because the background clearing was a theme-specific
+change, it broke differently in different themes.</p>
+
+<p>Oh, and don&rsquo;t worry! All of this was completely unannounced. I found out about
+the layer drawing by reading a random blog post <em>after</em> the release of 3.14
+mentioning that it might be useful for another application. It will be too&hellip;
+one day.</p>
+
+<h2>Images in dialogs</h2>
+
+<p>Dialogs used to be guaranteed to have an image if a message-type was set. This
+is no longer the case, so any code that assumed that there was going to be an
+image there just breaks. Good job!</p>
+
+<p>This broke lots of random dialogs in Meld, and prevented people from doing
+things like&hellip; saving files.</p>
+
+<h2>Dialogs in general</h2>
+
+<p>Spacing, padding and outline drawing have all changed, so all our dialogs now
+look awful. They&rsquo;ll have to be adjusted to look okay with GTK+ 3.14 which
+will, by extension, make them look awful with everything pre-3.14.</p>
+
+<h2>Size calculation changes</h2>
+
+<p>In 3.10, the way GtkBox expand properties propagate changed. Now granted, it
+was weirdly broken before, but this behaviour change made a couple of bits of
+Meld&rsquo;s preferences dialog unusable.</p>
+
+<h1>Life as a GTK+ app developer</h1>
+
+<p>When Meld 3.12 was released, my plan was to get a really quick 3.14 release
+done and out, and try for another quick release to sync up Meld and GNOME on
+3.16. Instead, I&rsquo;ve spent most of my very limited spare time plugging holes
+in various regressions.</p>
+
+<p>Accusations that level X of a technology stack doesn&rsquo;t really understand what
+it&rsquo;s like for level Y of the technology stack aren&rsquo;t exactly new. Some vocal
+members of the community will complain about this in any stack, and GTK+ is
+no different. However, this is the first release cycle that I&rsquo;ve spent hours
+actively cursing breakages in the GTK+ stack. I hope it&rsquo;s a blip.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What's new in Meld 3.12]]></title>
@@ -216,116 +279,6 @@ significant boost.</p>
 
 <p>&hellip;all of which makes me wonder just how many people didn&rsquo;t become involved
 in Meld due to an unwatched moderation queue.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Goings-on in Meld HEAD (and local branches)]]></title>
-    <link href="http://kaiw.github.com/blog/2012/12/08/goings-on/"/>
-    <updated>2012-12-08T06:03:00+10:00</updated>
-    <id>http://kaiw.github.com/blog/2012/12/08/goings-on</id>
-    <content type="html"><![CDATA[<p>Git HEAD can be an interesting place. It&rsquo;s actually not that scary right now,
-but there have been a few interesting changes go in. There&rsquo;s also some cool
-stuff in the pipeline. As usual, however, that will all take an indeterminate
-period of time to arrive.</p>
-
-<h2>Python 3-ish support (in HEAD)</h2>
-
-<p>In a series of twenty-something commits, I&rsquo;ve updated everything I could find
-that might cause issues when running Meld on Python 3. This is a combination of
-things found by <a href="https://github.com/mitsuhiko/python-modernize">Python modernize</a>,
-<a href="http://docs.python.org/2/library/2to3.html">2to3</a>, and manual inspection. Due
-to my lack of a Python 3 PyGObject install, none of this is actually <em>tested</em>
-on Python 3, but it should all run on <code>-3</code> with no complaints.</p>
-
-<h2>Better version control interactions (in HEAD)</h2>
-
-<p>For ages, Meld has relied on a surprisingly-reliable-but-also-horrible way to
-get the repository version of a file that looks something like:</p>
-
-<ul>
-<li>Get the current version of the file</li>
-<li>Ask the VC for the diff between that file and the repository version</li>
-<li>Reverse apply that patch to the current version</li>
-<li>Hope&hellip;</li>
-</ul>
-
-
-<p>The last two steps failed on a fairly regular basis, particularly with
-Subversion, which <a href="https://bugzilla.gnome.org/show_bug.cgi?id=557615">loves</a>
-to <a href="https://bugzilla.gnome.org/show_bug.cgi?id=613685">lie</a> to us about what
-the actual differences are between your file and the repository. The method in
-current HEAD is somewhat more straightforward:</p>
-
-<ul>
-<li>Get the current version of the file</li>
-<li>Ask the VC for the previous version of the file</li>
-<li>Profit!</li>
-</ul>
-
-
-<p>While the second step has VC-specific wrinkles, it does get rid of a major pain
-point. The third step is as-yet untested. Currently only Git and Subversion use
-this method, but since almost all of Meld&rsquo;s &lsquo;couldn&rsquo;t reverse-apply this patch&rsquo;
-bugs are from Subversion, that&rsquo;s probably fine.</p>
-
-<h2>Recent comparisons (coming soon)</h2>
-
-<p>Over the years, people have requested file histories, bookmarks, reopening old
-comparisons&hellip; all sorts of different ways to deal with common comparisons.
-Usually, people have a set of two or three repositories that they view on a
-daily basis, or a couple of directory pairs that they need to sync regularly.
-Our previous solution was to store history, but this just makes it easier to
-find what you want to compare; re-opening is no faster, and the UI was not
-great anyway.</p>
-
-<p>Landing soon is a change that provides a very hacky integration with the
-standard recent files mechanism. This includes opening recent comparisons from
-the <code>File</code> menu, and command-line support for opening files in our own very
-special &lsquo;this is a comparison&rsquo; format.</p>
-
-<p>It&rsquo;s likely that this change will also spell the end for our clone of
-<a href="http://developer.gnome.org/libgnomeui/stable/GnomeFileEntry.html">GnomeFileEntry</a>;
-history support was the last thing keeping it alive. I&rsquo;m sure not everyone will
-be happy with moving to <code>GtkFileChooserButton</code>s, but the writing has been on
-the wall for several years now, and it&rsquo;s well past time to make the switch.</p>
-
-<h2>New comparison opening (coming soon-ish)</h2>
-
-<p>Meld has a long-standing problem with its &lsquo;New&rsquo; dialog. It doesn&rsquo;t make a whole
-lot of sense, the workflow to actually create a new comparison for it is slow,
-and it&rsquo;s not sufficiently obvious how you&rsquo;re supposed to use it. For example,
-it&rsquo;s not unusual to navigate to the folders you want to compare, only to
-realise that you can&rsquo;t actually select the folders because you&rsquo;ve tried to
-start a file comparison.</p>
-
-<p>Once the recent comparison feature has landed, the history-access aspect of the
-&lsquo;New comparison&rsquo; dialog can go away, which makes a new UI much easier and more
-useful. I&rsquo;ve also chosen to do away with the dialog entirely, in favour of
-sticking the UI in a new top-level tab.</p>
-
-<p><img class="center" src="/images/blog/NewComparisonTab.png" title="New comparison tab" ></p>
-
-<p>Another nicety here is that we now actually support opening blank comparisons!
-You could always do this, but it wasn&rsquo;t obvious to many people. One major use
-case here is pasting in clipboard fragments to be compared.</p>
-
-<p>While there are still some rough edges to be ironed out, I hope to land this
-sooner rather than later.</p>
-
-<h2>VC history comparisons (coming&hellip; sometime)</h2>
-
-<p>An offshoot of better VC integration is the ability to grab repository files
-from arbitrary revisions. Actually handling this sensibly is difficult however.
-We <em>could</em> just dump revisions to file and pass off file paths in <code>/tmp</code> as
-we currently do, but this really limits what we can do UI-wise. As such, I&rsquo;m
-working on a revamped file comparison view that will handle browsing of
-previous revisions of VC-controlled files.</p>
-
-<p><img class="center" src="/images/blog/VCHistory.png" title="Version control history example" ></p>
-
-<p>Yes, changing the combo box works. No, the SHA won&rsquo;t be the only indicator in
-the final UI. No, there&rsquo;s no Subversion support; only Git and Mercurial so far.</p>
 ]]></content>
   </entry>
   

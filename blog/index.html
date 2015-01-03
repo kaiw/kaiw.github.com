@@ -9,8 +9,8 @@
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="After an unexpectedly long transition, Meld 3.12 is the first stable release
-of Meld based on GTK+ 3. As usual, plenty has changed. While a lot of &hellip;">
+  <meta name="description" content="The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,96 @@ of Meld based on GTK+ 3. As usual, plenty has changed. While a lot of &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/04/life-as-a-gtk-app-developer/">Life as a GTK+ App Developer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-04T07:09:00+10:00" pubdate data-updated="true">Jan 4<span>th</span>, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions,
+so it seemed reasonable to expect that by the time the port was done, many
+users would have access to it. In fact, it took way longer than I&rsquo;d hoped and
+the GTK+ 3 port was released at about the same time as GTK+ 3.14 came out,
+which then broke everything.</p>
+
+<h2>GtkTextView/GtkSourceView painting</h2>
+
+<p>Drawing in GtkTextView and GtkSourceView changed to use a new API involved
+drawing of layers, and changed how the background was drawn. The new API is
+actually really nice and will be great to use, but&hellip;</p>
+
+<p>&hellip;well, it broke everything. The custom painting that Meld does all over the
+textview was broken, and because the background clearing was a theme-specific
+change, it broke differently in different themes.</p>
+
+<p>Oh, and don&rsquo;t worry! All of this was completely unannounced. I found out about
+the layer drawing by reading a random blog post <em>after</em> the release of 3.14
+mentioning that it might be useful for another application. It will be too&hellip;
+one day.</p>
+
+<h2>Images in dialogs</h2>
+
+<p>Dialogs used to be guaranteed to have an image if a message-type was set. This
+is no longer the case, so any code that assumed that there was going to be an
+image there just breaks. Good job!</p>
+
+<p>This broke lots of random dialogs in Meld, and prevented people from doing
+things like&hellip; saving files.</p>
+
+<h2>Dialogs in general</h2>
+
+<p>Spacing, padding and outline drawing have all changed, so all our dialogs now
+look awful. They&rsquo;ll have to be adjusted to look okay with GTK+ 3.14 which
+will, by extension, make them look awful with everything pre-3.14.</p>
+
+<h2>Size calculation changes</h2>
+
+<p>In 3.10, the way GtkBox expand properties propagate changed. Now granted, it
+was weirdly broken before, but this behaviour change made a couple of bits of
+Meld&rsquo;s preferences dialog unusable.</p>
+
+<h1>Life as a GTK+ app developer</h1>
+
+<p>When Meld 3.12 was released, my plan was to get a really quick 3.14 release
+done and out, and try for another quick release to sync up Meld and GNOME on
+3.16. Instead, I&rsquo;ve spent most of my very limited spare time plugging holes
+in various regressions.</p>
+
+<p>Accusations that level X of a technology stack doesn&rsquo;t really understand what
+it&rsquo;s like for level Y of the technology stack aren&rsquo;t exactly new. Some vocal
+members of the community will complain about this in any stack, and GTK+ is
+no different. However, this is the first release cycle that I&rsquo;ve spent hours
+actively cursing breakages in the GTK+ stack. I hope it&rsquo;s a blip.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -856,44 +946,9 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/06/obligatory-first-post/">Obligatory First Post</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-06T07:54:00+10:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This blog is an attempt to consolidate the limited writing that I do.
-Statistics suggest that it will probably fail.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -904,6 +959,10 @@ Statistics suggest that it will probably fail.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/04/life-as-a-gtk-app-developer/">Life as a GTK+ App Developer</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/09/24/meld-3-12/">What&#8217;s New in Meld 3.12</a>
@@ -921,10 +980,6 @@ Statistics suggest that it will probably fail.</p>
         <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/12/08/goings-on/">Goings-on in Meld HEAD (and Local Branches)</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -939,7 +994,7 @@ Statistics suggest that it will probably fail.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Kai Willadsen -
+  Copyright &copy; 2015 - Kai Willadsen -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

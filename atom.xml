@@ -4,7 +4,7 @@
   <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2014-09-27T08:15:03+10:00</updated>
+  <updated>2015-01-04T07:12:16+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Life as a GTK+ App Developer]]></title>
+    <link href="http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/"/>
+    <updated>2015-01-04T07:09:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer</id>
+    <content type="html"><![CDATA[<p>The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions,
+so it seemed reasonable to expect that by the time the port was done, many
+users would have access to it. In fact, it took way longer than I&rsquo;d hoped and
+the GTK+ 3 port was released at about the same time as GTK+ 3.14 came out,
+which then broke everything.</p>
+
+<h2>GtkTextView/GtkSourceView painting</h2>
+
+<p>Drawing in GtkTextView and GtkSourceView changed to use a new API involved
+drawing of layers, and changed how the background was drawn. The new API is
+actually really nice and will be great to use, but&hellip;</p>
+
+<p>&hellip;well, it broke everything. The custom painting that Meld does all over the
+textview was broken, and because the background clearing was a theme-specific
+change, it broke differently in different themes.</p>
+
+<p>Oh, and don&rsquo;t worry! All of this was completely unannounced. I found out about
+the layer drawing by reading a random blog post <em>after</em> the release of 3.14
+mentioning that it might be useful for another application. It will be too&hellip;
+one day.</p>
+
+<h2>Images in dialogs</h2>
+
+<p>Dialogs used to be guaranteed to have an image if a message-type was set. This
+is no longer the case, so any code that assumed that there was going to be an
+image there just breaks. Good job!</p>
+
+<p>This broke lots of random dialogs in Meld, and prevented people from doing
+things like&hellip; saving files.</p>
+
+<h2>Dialogs in general</h2>
+
+<p>Spacing, padding and outline drawing have all changed, so all our dialogs now
+look awful. They&rsquo;ll have to be adjusted to look okay with GTK+ 3.14 which
+will, by extension, make them look awful with everything pre-3.14.</p>
+
+<h2>Size calculation changes</h2>
+
+<p>In 3.10, the way GtkBox expand properties propagate changed. Now granted, it
+was weirdly broken before, but this behaviour change made a couple of bits of
+Meld&rsquo;s preferences dialog unusable.</p>
+
+<h1>Life as a GTK+ app developer</h1>
+
+<p>When Meld 3.12 was released, my plan was to get a really quick 3.14 release
+done and out, and try for another quick release to sync up Meld and GNOME on
+3.16. Instead, I&rsquo;ve spent most of my very limited spare time plugging holes
+in various regressions.</p>
+
+<p>Accusations that level X of a technology stack doesn&rsquo;t really understand what
+it&rsquo;s like for level Y of the technology stack aren&rsquo;t exactly new. Some vocal
+members of the community will complain about this in any stack, and GTK+ is
+no different. However, this is the first release cycle that I&rsquo;ve spent hours
+actively cursing breakages in the GTK+ stack. I hope it&rsquo;s a blip.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What's New in Meld 3.12]]></title>

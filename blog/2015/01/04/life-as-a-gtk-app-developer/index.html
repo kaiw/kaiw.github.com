@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Obligatory First Post - Ambivalent Certainty</title>
+  <title>Life as a GTK+ App Developer - Ambivalent Certainty</title>
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="This blog is an attempt to consolidate the limited writing that I do.
-Statistics suggest that it will probably fail.
-">
+  <meta name="description" content="The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ Statistics suggest that it will probably fail.
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaiw.github.com/blog/2012/06/06/obligatory-first-post">
+  <link rel="canonical" href="http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Ambivalent Certainty" type="application/atom+xml">
@@ -83,7 +82,7 @@ Statistics suggest that it will probably fail.
   
   <header>
     
-      <h1 class="entry-title">Obligatory First Post</h1>
+      <h1 class="entry-title">Life as a GTK+ App Developer</h1>
     
     
       <p class="meta">
@@ -99,15 +98,68 @@ Statistics suggest that it will probably fail.
   
 
 
-<time datetime="2012-06-06T07:54:00+10:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+<time datetime="2015-01-04T07:09:00+10:00" pubdate data-updated="true">Jan 4<span>th</span>, 2015</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>This blog is an attempt to consolidate the limited writing that I do.
-Statistics suggest that it will probably fail.</p>
+<div class="entry-content"><p>The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
+started doing the port, 3.8 was what was available in current distributions,
+so it seemed reasonable to expect that by the time the port was done, many
+users would have access to it. In fact, it took way longer than I&rsquo;d hoped and
+the GTK+ 3 port was released at about the same time as GTK+ 3.14 came out,
+which then broke everything.</p>
+
+<h2>GtkTextView/GtkSourceView painting</h2>
+
+<p>Drawing in GtkTextView and GtkSourceView changed to use a new API involved
+drawing of layers, and changed how the background was drawn. The new API is
+actually really nice and will be great to use, but&hellip;</p>
+
+<p>&hellip;well, it broke everything. The custom painting that Meld does all over the
+textview was broken, and because the background clearing was a theme-specific
+change, it broke differently in different themes.</p>
+
+<p>Oh, and don&rsquo;t worry! All of this was completely unannounced. I found out about
+the layer drawing by reading a random blog post <em>after</em> the release of 3.14
+mentioning that it might be useful for another application. It will be too&hellip;
+one day.</p>
+
+<h2>Images in dialogs</h2>
+
+<p>Dialogs used to be guaranteed to have an image if a message-type was set. This
+is no longer the case, so any code that assumed that there was going to be an
+image there just breaks. Good job!</p>
+
+<p>This broke lots of random dialogs in Meld, and prevented people from doing
+things like&hellip; saving files.</p>
+
+<h2>Dialogs in general</h2>
+
+<p>Spacing, padding and outline drawing have all changed, so all our dialogs now
+look awful. They&rsquo;ll have to be adjusted to look okay with GTK+ 3.14 which
+will, by extension, make them look awful with everything pre-3.14.</p>
+
+<h2>Size calculation changes</h2>
+
+<p>In 3.10, the way GtkBox expand properties propagate changed. Now granted, it
+was weirdly broken before, but this behaviour change made a couple of bits of
+Meld&rsquo;s preferences dialog unusable.</p>
+
+<h1>Life as a GTK+ app developer</h1>
+
+<p>When Meld 3.12 was released, my plan was to get a really quick 3.14 release
+done and out, and try for another quick release to sync up Meld and GNOME on
+3.16. Instead, I&rsquo;ve spent most of my very limited spare time plugging holes
+in various regressions.</p>
+
+<p>Accusations that level X of a technology stack doesn&rsquo;t really understand what
+it&rsquo;s like for level Y of the technology stack aren&rsquo;t exactly new. Some vocal
+members of the community will complain about this in any stack, and GTK+ is
+no different. However, this is the first release cycle that I&rsquo;ve spent hours
+actively cursing breakages in the GTK+ stack. I hope it&rsquo;s a blip.</p>
 </div>
 
 
@@ -130,15 +182,21 @@ Statistics suggest that it will probably fail.</p>
   
 
 
-<time datetime="2012-06-06T07:54:00+10:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+<time datetime="2015-01-04T07:09:00+10:00" pubdate data-updated="true">Jan 4<span>th</span>, 2015</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/meld/'>Meld</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/" data-via="" data-counturl="http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/" data-via="" data-counturl="http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/" >Tweet</a>
   
   
   
@@ -147,8 +205,8 @@ Statistics suggest that it will probably fail.</p>
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2014/09/24/meld-3-12/" title="Previous Post: What's new in Meld 3.12">&laquo; What's new in Meld 3.12</a>
       
-        <a class="basic-alignment right" href="/blog/2012/06/12/plucking-a-mallard/" title="Next Post: Plucking a Mallard">Plucking a Mallard &raquo;</a>
       
     </p>
   </footer>
@@ -215,8 +273,8 @@ Statistics suggest that it will probably fail.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/';
-        var disqus_url = 'http://kaiw.github.com/blog/2012/06/06/obligatory-first-post/';
+        var disqus_identifier = 'http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/';
+        var disqus_url = 'http://kaiw.github.com/blog/2015/01/04/life-as-a-gtk-app-developer/';
         var disqus_script = 'embed.js';
       
     (function () {
