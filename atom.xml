@@ -4,7 +4,7 @@
   <title><![CDATA[Ambivalent Certainty]]></title>
   <link href="http://kaiw.github.com/atom.xml" rel="self"/>
   <link href="http://kaiw.github.com/"/>
-  <updated>2015-01-04T07:12:16+10:00</updated>
+  <updated>2015-07-23T07:50:05+10:00</updated>
   <id>http://kaiw.github.com/</id>
   <author>
     <name><![CDATA[Kai Willadsen]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What's New in Meld 3.14]]></title>
+    <link href="http://kaiw.github.com/blog/2015/07/21/meld-3-14/"/>
+    <updated>2015-07-21T06:21:00+10:00</updated>
+    <id>http://kaiw.github.com/blog/2015/07/21/meld-3-14</id>
+    <content type="html"><![CDATA[<p>Not much.</p>
+
+<p>Oh, okay a few things, but really nothing exciting.</p>
+
+<h2>Prettier, searchier file comparison</h2>
+
+<p>Meld now has limited support for GtkSourceView style schemes for syntax
+highlighting. The &lsquo;limited&rsquo; bit here is that our chunk highlight
+colours are still taken from CSS; this will change in 3.15.</p>
+
+<p>Also thanks to GtkSourceView, Meld now supports incremental search with
+nice match highlighting and other related fixes. So while the
+find-replace interface is due for an overhaul, at least we now do nice
+things in the back-end.</p>
+
+<h2>Clearer folder comparisons</h2>
+
+<p>Folder and file comparisons used to get into a weird state where one
+checked for line ending differences and the other did not. We&rsquo;re now
+more consistent here, with folder comparisons using our existing
+same-once-filtered styling for files that are identical <em>except for line
+endings</em>.</p>
+
+<p>As additional niceties, folder comparisons now have a &ldquo;everything is
+identical&rdquo; notification like file comparisons had, and we now remember
+the expansion state of subtrees in folder comparisons to better support
+folding and unfolding.</p>
+
+<h2>Random fixes</h2>
+
+<p>Meld 3.12 was the first to use new GTK+ 3 and associated bits, so a
+fair bit of effort went into fixing little bits and pieces from the
+port. Command-line handling should now behave better. We handle
+Unicode file names better in a few cases, including several fixes to
+handling Unicode paths in Git repositories. Some of our custom widgets
+that had bad behaviour in RTL locales have been fixed.</p>
+
+<h2>Upcoming stuff</h2>
+
+<p>As previous maintainer-grumpiness might indicate, this was a
+challenging release cycle due to a bunch of issues including some
+problems related to newer GTK+ versions. Fixing this took a bunch of
+time and energy, but the future is looking decidedly brighter.</p>
+
+<p>Specifically, the positive-but-very-painful drawing changes in
+<code>GtkTextView</code> are going to start actually benefiting us. Meld 3.15 will
+do all its change drawing in a relatively sane way, which also lets us
+take advantage of some performance improvements in GTK+.</p>
+
+<p>The version bump required to get the new GTK+ API for better drawing
+will also mean that we can update to better argument handling provided
+by updates to <code>GApplication</code>. This should significantly increase the
+sanity levels of our current argument and instance handling, and might
+help us fix a few weird corner-cases where multiple windows really
+don&rsquo;t do what you might expect.</p>
+
+<p>A <code>GtkSourceView</code> version bump gets us more cool stuff, including access
+to their awesome <code>GtkSourceFileLoader</code>/<code>Saver</code> classes, which will
+significantly improve our performance, and more importantly gets us one
+step closer to actually handling non-local file comparison properly.</p>
+
+<p>Finally, a to-be-merged rework of our version control handling should
+fix some long-standing issues with consistency between our supported
+version control systems, as well as improving performance.
+Unfortunately this comes at the cost of removing support for existing
+version control plugins with no maintainers, but hopefully we&rsquo;ll recover
+some of these before the 3.16 release.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Life as a GTK+ App Developer]]></title>

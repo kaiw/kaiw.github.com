@@ -9,8 +9,7 @@
   <meta name="author" content="Kai Willadsen">
 
   
-  <meta name="description" content="The GTK+ 3 port of Meld was developed against 3.8, targetting 3.6. When I
-started doing the port, 3.8 was what was available in current distributions &hellip;">
+  <meta name="description" content="Not much. Oh, okay a few things, but really nothing exciting. Prettier, searchier file comparison Meld now has limited support for GtkSourceView &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,108 @@ started doing the port, 3.8 was what was available in current distributions &hel
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/21/meld-3-14/">What&#8217;s New in Meld 3.14</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-21T06:21:00+10:00" pubdate data-updated="true">Jul 21<span>st</span>, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Not much.</p>
+
+<p>Oh, okay a few things, but really nothing exciting.</p>
+
+<h2>Prettier, searchier file comparison</h2>
+
+<p>Meld now has limited support for GtkSourceView style schemes for syntax
+highlighting. The &lsquo;limited&rsquo; bit here is that our chunk highlight
+colours are still taken from CSS; this will change in 3.15.</p>
+
+<p>Also thanks to GtkSourceView, Meld now supports incremental search with
+nice match highlighting and other related fixes. So while the
+find-replace interface is due for an overhaul, at least we now do nice
+things in the back-end.</p>
+
+<h2>Clearer folder comparisons</h2>
+
+<p>Folder and file comparisons used to get into a weird state where one
+checked for line ending differences and the other did not. We&rsquo;re now
+more consistent here, with folder comparisons using our existing
+same-once-filtered styling for files that are identical <em>except for line
+endings</em>.</p>
+
+<p>As additional niceties, folder comparisons now have a &ldquo;everything is
+identical&rdquo; notification like file comparisons had, and we now remember
+the expansion state of subtrees in folder comparisons to better support
+folding and unfolding.</p>
+
+<h2>Random fixes</h2>
+
+<p>Meld 3.12 was the first to use new GTK+ 3 and associated bits, so a
+fair bit of effort went into fixing little bits and pieces from the
+port. Command-line handling should now behave better. We handle
+Unicode file names better in a few cases, including several fixes to
+handling Unicode paths in Git repositories. Some of our custom widgets
+that had bad behaviour in RTL locales have been fixed.</p>
+
+<h2>Upcoming stuff</h2>
+
+<p>As previous maintainer-grumpiness might indicate, this was a
+challenging release cycle due to a bunch of issues including some
+problems related to newer GTK+ versions. Fixing this took a bunch of
+time and energy, but the future is looking decidedly brighter.</p>
+
+<p>Specifically, the positive-but-very-painful drawing changes in
+<code>GtkTextView</code> are going to start actually benefiting us. Meld 3.15 will
+do all its change drawing in a relatively sane way, which also lets us
+take advantage of some performance improvements in GTK+.</p>
+
+<p>The version bump required to get the new GTK+ API for better drawing
+will also mean that we can update to better argument handling provided
+by updates to <code>GApplication</code>. This should significantly increase the
+sanity levels of our current argument and instance handling, and might
+help us fix a few weird corner-cases where multiple windows really
+don&rsquo;t do what you might expect.</p>
+
+<p>A <code>GtkSourceView</code> version bump gets us more cool stuff, including access
+to their awesome <code>GtkSourceFileLoader</code>/<code>Saver</code> classes, which will
+significantly improve our performance, and more importantly gets us one
+step closer to actually handling non-local file comparison properly.</p>
+
+<p>Finally, a to-be-merged rework of our version control handling should
+fix some long-standing issues with consistency between our supported
+version control systems, as well as improving performance.
+Unfortunately this comes at the cost of removing support for existing
+version control plugins with no maintainers, but hopefully we&rsquo;ll recover
+some of these before the 3.16 release.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -817,135 +918,6 @@ and <a href="http://git.gnome.org/browse/meld/commit/?id=6709339af6478e3576f3a76
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/12/plucking-a-mallard/">Plucking a Mallard</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-12T19:08:00+10:00" pubdate data-updated="true">Jun 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Meld is in the process of getting nice new shiny
-<a href="http://projectmallard.org/">Mallard</a>-based documentation. There are several
-things standing in the way of getting our new help actually distributed with
-Meld &mdash;&ndash; not least of which being that I haven&rsquo;t yet pushed it to Git &mdash;&ndash; but
-there&rsquo;s nothing much stopping me from making it available on the
-<a href="http://meldmerge.org/">Meld website</a>.</p>
-
-<p>Putting the Mallard docs online involved:</p>
-
-<ul>
-<li>Formatting the docs as HTML</li>
-<li>Pulling the necessary content out of the formatted docs</li>
-<li>Fixing the Mallard-generated CSS to only apply to the embedded content</li>
-</ul>
-
-
-<h2>Mallard to HTML</h2>
-
-<p>While it&rsquo;s sadly not obvious that you can do this, you can use
-<code>gnome-doc-utils</code> to
-<a href="http://projectmallard.org/pipermail/mallard-list_projectmallard.org/2010-November/000037.html">generate fairly straightforward HTML and accompanying CSS</a>
-from Mallard documentation.</p>
-
-<pre><code>gnome-doc-tool css
-gnome-doc-tool html -c index.css --copy-graphics *.page
-</code></pre>
-
-<p>You&rsquo;ll get an HTML page for each Mallard page, and it&rsquo;ll all link to the
-external CSS. No drama here.</p>
-
-<h2>Stripping the HTML</h2>
-
-<p>The HTML generated is designed to be stand-alone. However, we want to be able
-to embed it in an existing webpage. Doing the simplest and hackiest thing
-available, I used BeautifulSoup to just pull out the contents of the body, add
-a header for Jekyll (Meld&rsquo;s site is hosted on GitHub) and rewrite the new
-&lsquo;HTML&rsquo;.</p>
-
-<p>I added a new Jekyll layout to be used for the help pages, and wrapped the
-whole help content block in a <code>#help-content</code> <code>div</code>.</p>
-
-<h2>Massaging the CSS</h2>
-
-<p>The generated CSS is all top-level rules and whatnot. Worse yet, it uses
-<em>sensible</em> class names like &ldquo;title&rdquo;, so you&rsquo;re bound to have conflicting
-classes in an existing site. Again doing the stupidest thing that would work,
-I wrapped the whole CSS file in:</p>
-
-<pre><code>#help-content {
-    ...
-}
-</code></pre>
-
-<p>and passed it through <a href="http://sass-lang.com/">Sass</a> as SCSS. This stopped the
-help CSS messing with the main site, but the help pages themselves were all
-wrong due to some messy interaction with the existing CSS reset, etc. A few
-additional (evil) styling overrides:</p>
-
-<pre><code>#help-content {
-  background-color: #ffffff;
-}
-
-#help-content div.body {
-  border: none !important;
-}
-
-#help-content div.headbar {
-  margin: 10px !important;
-}
-
-#help-content div.footbar {
-  margin: 10px !important;
-}
-
-#help-content .title {
-  line-height: 1em;
-}
-
-#help-content h1 {
-  font-family: sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-#help-content h2 {
-  font-family: sans-serif;
-  color: black;
-}
-</code></pre>
-
-<p>and it looks pretty much like a sensibly-embedded Mallard page.</p>
-
-<p>It&rsquo;s a pile of dirty hacks, but now at least Windows users can read our
-documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -961,6 +933,10 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/07/21/meld-3-14/">What&#8217;s New in Meld 3.14</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/04/life-as-a-gtk-app-developer/">Life as a GTK+ App Developer</a>
       </li>
     
@@ -974,10 +950,6 @@ documentation. <a href="http://meldmerge.org/help/">Check it out.</a></p>
     
       <li class="post">
         <a href="/blog/2013/09/15/meld-18/">What&#8217;s New in Meld 1.8?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/12/mailing-list/">The Tale of the Unwatched List</a>
       </li>
     
   </ul>
