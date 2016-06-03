@@ -1,0 +1,31 @@
+---
+layout: post
+title: "xdg-app support"
+date: 2016-03-12 10:36
+comments: true
+categories: [Meld]
+---
+
+Meld in master has 'support' for being built as an xdg-app bundle. This hasn't
+actually required any changes to Meld itself, just a script or two to do the
+necessary building + shims.
+
+If you want to build your own bundle, you can clone current Meld from git, and
+then:
+
+{% highlight shell %}
+sh Build an xdg-app bundle
+mkdir meld-repo && mkdir appdir
+cd meld
+xdg-app-builder --repo=../meld-repo ../appdir data/org.gnome.meld-devel.json
+cd ..
+xdg-app --user remote-add --no-gpg-verify meld-repo meld-repo
+xdg-app --user install meld-repo org.gnome.meld
+{% endhighlight %}
+
+Yes, this will download another copy of Meld from git, even though you just
+cloned it. Don't think about it too much. This is just the result of me not
+properly understanding the `xdg-app` building model when I started, and the
+building model being a little odd. I'm sure there is (or will be) a sane way
+to keep `xdg-app` building info and scripts in the repo you're building, but
+for now this appears to basically work.

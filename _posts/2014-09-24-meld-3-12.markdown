@@ -1,0 +1,131 @@
+---
+layout: post
+title: "What's new in Meld 3.12"
+date: 2014-09-24 07:40
+comments: true
+categories: [Meld]
+---
+
+After an unexpectedly long transition, Meld 3.12 is the first stable release
+of Meld based on GTK+ 3. As usual, plenty has changed. While a lot of work
+this time around was behind the scenes, some of that work has enabled cool new
+features as well.
+
+
+Appearance
+----------
+
+Everything looks... newer. With the update to GTK+ 3, we've removed the use of
+some older widgets&mdash;most notably the old-style file selectors&mdash;and
+somewhat modernised the layout and overall visual appearance. We've also
+cleaned up some icons to be a little more balanced, and updated the overall
+colour scheme. While not ready yet, the next release cycle will also see
+support for global dark theme settings.
+
+![Theme improvements for 3.12](/assets/3-12-theme.png)
+![Upcoming dark theme support](/assets/3-13-theme-dark.png)
+
+<div style="clear: both;"></div>
+
+Under GNOME Shell, Meld will integrate into the GNOME 3 style application
+menu, and we'll fall back to adding a new "Meld" menu for other platforms.
+
+
+Comparisons
+-----------
+
+Pane resizing&mdash;a long-standing feature request, finally picked up by
+Marco Brito&mdash;has been merged. Hopefully this will make comparisons easier
+for those of you who stuck trying to do a three-way merge on a 13" screen.
+
+File comparisons now show a notification if a file is modified outside of
+Meld, and prompt to reload. We also display better labels for file comparisons
+launched from version control, so you should no longer see useless temporary
+file names here.
+
+In folder comparisons, if you have a folder that's empty after filtering has
+been applied, that folder will (finally) be correctly trimmed from the tree.
+We also now use normal desktop trash handling for file operations, instead of
+just deleting things forever without warning...
+
+![Marking conflicts resolved](/assets/conflict-dialog.png)
+
+On the version control side of things, we have some support for showing file
+metadata, including renames thanks to Louis des Landes. Currently this is only
+used by Bazaar, but we'll hopefully extend this support to Git and Mercurial
+soon. Finally, as a handy touch, for conflict resolutions that you start from
+a Meld version control tab, we now prompt to mark a conflict as resolved when
+you close the file comparison.
+
+<div style="clear: both;"></div>
+
+
+Help and translation
+--------------------
+
+![Yelp browsing new Meld help](/assets/yelp-help.png)
+
+Meld now uses Mallard for documentation, and there's a <strike>hack</strike>
+script that we use to provide [online help](http://meldmerge.org/help/) for
+non-GNOME platforms.
+
+Thanks to the thoroughly awesome GNOME Translation Teams, Meld's translations
+are [looking good](https://l10n.gnome.org/module/meld/), with several full
+translations for the new manual as well! Of course, our translation coverage
+could always be better, so if you notice gaps in your native language support,
+please consider [joining a team](https://l10n.gnome.org/teams/) to help out.
+
+<div style="clear: both;"></div>
+
+Windows support
+---------------
+
+While Meld has worked on Windows for some time, we are now building and
+distributing stand-alone Windows installers for Meld. Some of our Windows
+support is still a little rough around the edges, but with more users and a
+better distribution story, you can expect to see this situation continue to
+improve in the coming release cycles. Thanks go to Keegan Witt for maintaining
+the unofficial binary distribution, and for helping out with the transition.
+
+
+Behind the scenes
+-----------------
+
+Meld is now a single-instance application, using the GtkApplication model. By
+default Meld will still use multiple windows, and each command-line process
+will wait until its window has closed, so from a user point of view, very
+little should change.
+
+With the transition to the newer GTK+ 3 platform and related tools, we've also
+cleaned up tonnes of unpleasant code. Preferences handling has been rewritten,
+our custom colours are CSS-themed and we've moved to making heavier use of the
+excellent GtkSourceView library.
+
+
+Future plans
+------------
+
+By the time you read this, 3.12 will probably have already branched, and some
+pending stuff for 3.13 will be going in. My list of things-to-merge already
+includes incremental find for file comparisons, better dark theme support, and
+a rework of conflict resolution mode to show a combination of the pre-merged
+file with ancestor information for conflicting sections.
+
+If you'd like to get involved with Meld development then please get in
+touch on the mailing list: [meld-list@gnome.org](mailto:meld-list@gnome.org).
+
+
+Thanks
+------
+
+Thanks to everyone who contributed to the release, whether through features,
+translations or bugfixes:
+Andika Triwidada, Bartosz Dziewoński, Ben Ross,
+Benjamin Steinwender, Casey, Christoph Brill, Daniel Mustieles, Daniel Pantea,
+Dimitris Spingos, Dominique Leuenberger, Enrico Nicoletto, Facundo Dario
+Illanes, fr33domlover, Fran Diéguez, Gabor Kelemen, Gianni Trovisi, Inaki
+Larranaga Murgoitio, Jiri Grönroos, Josef Andersson, Kai Willadsen, Lars
+Wendler, Lasse Liehu, Louis des Landes, Marco Brito, Marek Černocký, Matej
+Urbančič, Milo Casagrande, Peter Tyser, Piotr Drąg, Rafael Ferreira, Thomas
+Klausner, Tom Scytale, Tom Tryfonidis, Ville-Pekka Vainio, Yuri Myasoedov,
+zodiac111, Özgür Sarıer, Мирослав Николић

@@ -1,0 +1,83 @@
+---
+layout: post
+title: "What's New in Meld 3.14"
+date: 2015-07-21 06:21
+comments: true
+categories: [Meld]
+---
+
+Not much.
+
+Oh, okay a few things, but really nothing exciting.
+
+
+Prettier, searchier file comparison
+-----------------------------------
+
+Meld now has limited support for GtkSourceView style schemes for syntax
+highlighting. The 'limited' bit here is that our chunk highlight
+colours are still taken from CSS; this will change in 3.15.
+
+Also thanks to GtkSourceView, Meld now supports incremental search with
+nice match highlighting and other related fixes. So while the
+find-replace interface is due for an overhaul, at least we now do nice
+things in the back-end.
+
+
+Clearer folder comparisons
+--------------------------
+
+Folder and file comparisons used to get into a weird state where one
+checked for line ending differences and the other did not. We're now
+more consistent here, with folder comparisons using our existing
+same-once-filtered styling for files that are identical *except for line
+endings*.
+
+As additional niceties, folder comparisons now have a "everything is
+identical" notification like file comparisons had, and we now remember
+the expansion state of subtrees in folder comparisons to better support
+folding and unfolding.
+
+
+Random fixes
+------------
+
+Meld 3.12 was the first to use new GTK+ 3 and associated bits, so a
+fair bit of effort went into fixing little bits and pieces from the
+port. Command-line handling should now behave better. We handle
+Unicode file names better in a few cases, including several fixes to
+handling Unicode paths in Git repositories. Some of our custom widgets
+that had bad behaviour in RTL locales have been fixed.
+
+
+Upcoming stuff
+--------------
+
+As previous maintainer-grumpiness might indicate, this was a
+challenging release cycle due to a bunch of issues including some
+problems related to newer GTK+ versions. Fixing this took a bunch of
+time and energy, but the future is looking decidedly brighter.
+
+Specifically, the positive-but-very-painful drawing changes in
+`GtkTextView` are going to start actually benefiting us. Meld 3.15 will
+do all its change drawing in a relatively sane way, which also lets us
+take advantage of some performance improvements in GTK+.
+
+The version bump required to get the new GTK+ API for better drawing
+will also mean that we can update to better argument handling provided
+by updates to `GApplication`. This should significantly increase the
+sanity levels of our current argument and instance handling, and might
+help us fix a few weird corner-cases where multiple windows really
+don't do what you might expect.
+
+A `GtkSourceView` version bump gets us more cool stuff, including access
+to their awesome `GtkSourceFileLoader`/`Saver` classes, which will
+significantly improve our performance, and more importantly gets us one
+step closer to actually handling non-local file comparison properly.
+
+Finally, a to-be-merged rework of our version control handling should
+fix some long-standing issues with consistency between our supported
+version control systems, as well as improving performance.
+Unfortunately this comes at the cost of removing support for existing
+version control plugins with no maintainers, but hopefully we'll recover
+some of these before the 3.16 release.
